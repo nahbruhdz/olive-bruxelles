@@ -1014,7 +1014,8 @@ footer {
   <div class="video-grid">
     <div class="video-cell">
       <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/5752729/5752729-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/3997991/3997991-hd_1920_1080_25fps.mp4" type="video/mp4">
       </video>
       <div class="video-overlay">
         <div class="video-label">Notre savoir-faire</div>
@@ -1023,11 +1024,12 @@ footer {
     </div>
     <div class="video-cell">
       <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/5702775/5702775-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/5752735/5752735-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/6325802/6325802-uhd_3840_2160_25fps.mp4" type="video/mp4">
       </video>
       <div class="video-overlay" style="align-items:flex-end;text-align:right">
-        <div class="video-label">Boutique</div>
-        <div class="video-title">Rue du Midi<br>Bruxelles</div>
+        <div class="video-label">Expertise optique</div>
+        <div class="video-title">Précision<br>& soin</div>
       </div>
     </div>
   </div>
@@ -1065,10 +1067,16 @@ footer {
 <!-- À PROPOS -->
 <section id="apropos">
   <div class="apropos-grid">
-    <div class="apropos-visuel rvl">
-      <div class="apropos-frame"></div>
-      <img class="apropos-img-main" src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=900&auto=format&fit=crop&q=85" alt="Olive opticienne Bruxelles">
-      <div class="apropos-badge">
+    <div class="apropos-visuel rvl" style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
+      <div id="kador-canvas-wrap" style="width:100%;height:480px;position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#f8f2e8 0%,#ede4d6 50%,#e0d5c5 100%);box-shadow:0 40px 100px rgba(22,22,16,.18);">
+        <canvas id="kador-canvas" style="width:100%;height:100%;display:block;"></canvas>
+        <div style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;">
+          <div style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(92,107,58,.5);font-family:'Sora',sans-serif;">Collection</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#5C6B3A;letter-spacing:.08em;">Kador</div>
+        </div>
+        <div style="position:absolute;top:20px;right:20px;font-size:.58rem;letter-spacing:.2em;color:rgba(22,22,16,.25);font-family:'Sora',sans-serif;">↕ défiler</div>
+      </div>
+      <div class="apropos-badge" style="position:absolute;bottom:-20px;right:20px;">
         <div class="apropos-badge-inner">
           <span class="badge-n">15</span>
           <span class="badge-l">ans · years</span>
@@ -1550,7 +1558,7 @@ footer {
 
 <!-- AI AGENT -->
 <div id="ai-agent">
-  <div id="ai-bubble">Besoin d'aide ? 💬</div>
+  <div id="ai-bubble" onclick="toggleChat()" style="cursor:pointer">Besoin d'aide ? 💬</div>
   <button id="chat-btn" onclick="toggleChat()">
     <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
       <circle cx="18" cy="18" r="7" stroke="white" stroke-width="1.8" fill="none"/>
@@ -1761,70 +1769,156 @@ function sendSug(t){document.getElementById('ci').value=t;sendMsg();}
 // ── FORM ──
 function submitForm(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');btn.innerHTML='Envoyé ✓';btn.style.background='var(--olive-dark)';btn.disabled=true;}
 
-// ── LUNETTES 3D ──
+// ── LUNETTES 3D KADOR ──
 (function(){
   const s=document.createElement('script');
   s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
   s.onload=function(){
-    const canvas=document.getElementById('glasses-canvas');
+    const canvas=document.getElementById('kador-canvas');
     if(!canvas)return;
-    const wrap=document.getElementById('glasses-canvas-wrap');
-    const W=wrap.offsetWidth||680,H=wrap.offsetHeight||400;
+    const wrap=document.getElementById('kador-canvas-wrap');
+    const W=wrap.offsetWidth||480, H=wrap.offsetHeight||480;
     const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     renderer.setSize(W,H);
+    renderer.shadowMap.enabled=true;
     const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(42,W/H,.1,100);
+    const camera=new THREE.PerspectiveCamera(38,W/H,.1,100);
     camera.position.set(0,0,5.5);
-    scene.add(new THREE.AmbientLight(0xf8f2e8,.7));
-    const kl=new THREE.DirectionalLight(0xffffff,1.3);kl.position.set(3,4,3);scene.add(kl);
-    const fl=new THREE.DirectionalLight(0xc8a45e,.6);fl.position.set(-3,0,2);scene.add(fl);
-    const rl=new THREE.DirectionalLight(0x7a8f50,.4);rl.position.set(0,-2,-3);scene.add(rl);
-    const mF=new THREE.MeshStandardMaterial({color:0xC8A45E,metalness:.92,roughness:.12});
-    const mL=new THREE.MeshPhysicalMaterial({color:0x2a3420,transmission:.75,transparent:true,opacity:.6,roughness:.04,metalness:.05,ior:1.5,thickness:.3});
-    const mN=new THREE.MeshStandardMaterial({color:0x111108,roughness:.5});
+
+    // Éclairage premium studio
+    scene.add(new THREE.AmbientLight(0xfff8f0,.5));
+    const k=new THREE.DirectionalLight(0xffffff,1.4);k.position.set(4,5,4);k.castShadow=true;scene.add(k);
+    const f=new THREE.DirectionalLight(0xd4af37,.8);f.position.set(-4,1,2);scene.add(f);
+    const r=new THREE.DirectionalLight(0xc8a45e,.5);r.position.set(0,3,-3);scene.add(r);
+    const b=new THREE.PointLight(0xfff8e8,.6,12);b.position.set(0,-2,3);scene.add(b);
+
+    // Matériaux Kador premium
+    const mGold=new THREE.MeshStandardMaterial({color:0xD4AF37,metalness:.97,roughness:.06,envMapIntensity:1.5});
+    const mLens=new THREE.MeshPhysicalMaterial({color:0x2A1F15,transmission:.6,transparent:true,opacity:.5,roughness:.02,ior:1.55,thickness:.5});
+    const mNose=new THREE.MeshStandardMaterial({color:0x1a1208,roughness:.4,metalness:.2});
+
     const G=new THREE.Group();
-    const RW=.72,RH=.5;
-    function rim(x){
-      const sh=new THREE.Shape();sh.absellipse(0,0,RW,RH,0,Math.PI*2);
-      const h=new THREE.Path();h.absellipse(0,0,RW-.055,RH-.055,0,Math.PI*2,true);sh.holes.push(h);
-      const geo=new THREE.ExtrudeGeometry(sh,{depth:.055,bevelEnabled:true,bevelSize:.012,bevelThickness:.008,bevelSegments:3});
-      const m=new THREE.Mesh(geo,mF);m.position.x=x;return m;
+
+    // Monture KADOR — rectangulaire arrondie (style luxe contemporain)
+    // Dimensions: large horizontalement, modérée verticalement
+    const LW=0.88, LH=0.52, R=0.14; // radius des coins
+
+    function makeRoundedRect(w,h,r){
+      const shape=new THREE.Shape();
+      shape.moveTo(-w+r,h);
+      shape.lineTo(w-r,h);shape.quadraticCurveTo(w,h,w,h-r);
+      shape.lineTo(w,-h+r);shape.quadraticCurveTo(w,-h,w-r,-h);
+      shape.lineTo(-w+r,-h);shape.quadraticCurveTo(-w,-h,-w,-h+r);
+      shape.lineTo(-w,h-r);shape.quadraticCurveTo(-w,h,-w+r,h);
+      return shape;
     }
-    function lens(x){
-      const pts=new THREE.EllipseCurve(0,0,RW-.07,RH-.07,0,Math.PI*2).getPoints(64);
-      const m=new THREE.Mesh(new THREE.ShapeGeometry(new THREE.Shape(pts)),mL);m.position.set(x,0,.025);return m;
+
+    function makeRim(x){
+      const outer=makeRoundedRect(LW,LH,R);
+      const inner=makeRoundedRect(LW-.055,LH-.055,R-.02);
+      inner.holes=[];
+      const hole=new THREE.Path();
+      // Créer le trou via path inversé
+      const outerShape=makeRoundedRect(LW,LH,R);
+      outerShape.holes=[new THREE.Path(makeRoundedRect(LW-.06,LH-.06,R-.025).getPoints(48))];
+      const geo=new THREE.ExtrudeGeometry(outerShape,{depth:.055,bevelEnabled:true,bevelSize:.012,bevelThickness:.01,bevelSegments:4});
+      const m=new THREE.Mesh(geo,mGold);
+      m.position.x=x;
+      m.castShadow=true;
+      return m;
     }
-    G.add(rim(-0.88));G.add(rim(0.88));G.add(lens(-0.88));G.add(lens(0.88));
-    const br=new THREE.Mesh(new THREE.CylinderGeometry(.022,.022,.26,10),mF);br.rotation.z=Math.PI/2;br.position.set(0,.06,0);G.add(br);
+
+    function makeLens(x){
+      const shape=makeRoundedRect(LW-.07,LH-.07,R-.025);
+      const geo=new THREE.ShapeGeometry(shape,32);
+      const m=new THREE.Mesh(geo,mLens);
+      m.position.set(x,0,.025);
+      return m;
+    }
+
+    G.add(makeRim(-1.0));G.add(makeRim(1.0));
+    G.add(makeLens(-1.0));G.add(makeLens(1.0));
+
+    // Pont nasal plat style Kador
+    const bridgeShape=new THREE.Shape();
+    bridgeShape.moveTo(-.18,.06);bridgeShape.lineTo(.18,.06);
+    bridgeShape.lineTo(.18,-.06);bridgeShape.lineTo(-.18,-.06);
+    bridgeShape.closePath();
+    const brGeo=new THREE.ExtrudeGeometry(bridgeShape,{depth:.04,bevelEnabled:true,bevelSize:.008,bevelThickness:.005,bevelSegments:2});
+    const br=new THREE.Mesh(brGeo,mGold);
+    br.position.z=-.02;
+    br.position.y=.04;
+    G.add(br);
+
+    // Branches Kador — droites avec coude élégant
     function temple(s){
-      const cv=new THREE.CatmullRomCurve3([new THREE.Vector3(s*(RW+.88),0,0),new THREE.Vector3(s*(RW+1.35),0,-.3),new THREE.Vector3(s*(RW+1.9),-.14,-.9),new THREE.Vector3(s*(RW+1.95),-.48,-1.0)]);
-      G.add(new THREE.Mesh(new THREE.TubeGeometry(cv,20,.02,8),mF));
+      const cv=new THREE.CatmullRomCurve3([
+        new THREE.Vector3(s*(LW+1.0),0,0),
+        new THREE.Vector3(s*(LW+1.0+.45),0,-.18),
+        new THREE.Vector3(s*(LW+1.0+.95),-.06,-.65),
+        new THREE.Vector3(s*(LW+1.0+1.05),-.38,-.88),
+      ]);
+      G.add(new THREE.Mesh(new THREE.TubeGeometry(cv,20,.022,10),mGold));
+      // Charnière
+      const hGeo=new THREE.CylinderGeometry(.032,.032,.06,12);
+      const h=new THREE.Mesh(hGeo,mGold);
+      h.position.set(s*(LW+1.0),.0,0);
+      h.rotation.z=Math.PI/2;
+      G.add(h);
+      // Embout
+      const eGeo=new THREE.CylinderGeometry(.026,.026,.1,8);
+      const e=new THREE.Mesh(eGeo,mNose);
+      e.position.set(s*(LW+2.06),-.42,-.9);
+      e.rotation.z=.15*s;
+      G.add(e);
     }
     temple(-1);temple(1);
-    [-.17,.17].forEach(sx=>{const p=new THREE.Mesh(new THREE.BoxGeometry(.035,.07,.025),mN);p.position.set(sx,-.33,.04);p.rotation.z=sx>0?.3:-.3;G.add(p);});
-    G.rotation.x=.15;
+
+    // Plaquettes nasales
+    [-.14,.14].forEach(sx=>{
+      const pg=new THREE.BoxGeometry(.03,.065,.025);
+      const p=new THREE.Mesh(pg,mNose);
+      p.position.set(sx,-.28,.04);
+      p.rotation.z=sx>0?.28:-.28;
+      G.add(p);
+    });
+
+    G.rotation.x=.06;
+    G.position.y=.15;
     scene.add(G);
-    let tY=0,cY=0,tX=.15,cX=.15,auto=0;
-    const sec=document.getElementById('glasses-3d');
+
+    // Scroll-driven rotation
+    let tY=0,cY=0,tX=.06,cX=.06,auto=0;
+    const sec=document.getElementById('apropos');
     window.addEventListener('scroll',()=>{
-      const r=sec.getBoundingClientRect(),vh=window.innerHeight;
-      if(r.top<vh&&r.bottom>0){const p=(vh-r.top)/(vh+r.height);tY=p*Math.PI*2.8-.4;tX=.15+Math.sin(p*Math.PI)*.18;}
+      if(!sec)return;
+      const rect=sec.getBoundingClientRect(),vh=window.innerHeight;
+      if(rect.top<vh&&rect.bottom>0){
+        const p=(vh-rect.top)/(vh+rect.height);
+        tY=p*Math.PI*3-.5;
+        tX=.06+Math.sin(p*Math.PI)*.15;
+      }
     },{passive:true});
     canvas.addEventListener('mousemove',e=>{
       const r=canvas.getBoundingClientRect();
       const x=(e.clientX-r.left)/r.width*2-1,y=(e.clientY-r.top)/r.height*2-1;
-      tX=.15-y*.22;tY+=x*.05;
+      tX=.06-y*.2;tY+=x*.06;
     });
     (function loop(){
-      requestAnimationFrame(loop);auto+=.006;
+      requestAnimationFrame(loop);
+      auto+=.005;
       cY+=(tY-cY)*.055;cX+=(tX-cX)*.055;
       G.rotation.y=cY+auto;G.rotation.x=cX;
       renderer.render(scene,camera);
     })();
-    window.addEventListener('resize',()=>{const nw=wrap.offsetWidth,nh=wrap.offsetHeight;camera.aspect=nw/nh;camera.updateProjectionMatrix();renderer.setSize(nw,nh);});
+    window.addEventListener('resize',()=>{
+      const nw=wrap.offsetWidth,nh=wrap.offsetHeight;
+      camera.aspect=nw/nh;camera.updateProjectionMatrix();renderer.setSize(nw,nh);
+    });
   };
   document.head.appendChild(s);
 })();
 </script>
 </body>
+</html>
