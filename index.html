@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLIVE — Opticienne · Optométriste · Visagiste · Bruxelles</title>
+<meta name="description" content="Olive, votre opticienne-optométriste-visagiste au cœur de Bruxelles. Rue du Midi 98. Expertise, élégance, regard personnalisé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Sora:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   OLIVE V3 — DIRECTION ARTISTIQUE LUXE
+   Palette: Olive profond · Terracotta · Crème · Or chaud
+   Référence: Palestine · L'olivier éternel
+   ============================================================ */
+
+:root {
+  --olive:        #5C6B3A;
+  --olive-light:  #7A8F50;
+  --olive-dark:   #3A4425;
+  --olive-deep:   #252B17;
+  --terra:        #B85C3C;
+  --terra-light:  #CC7655;
+  --terra-pale:   #E8997A;
+  --cream:        #F8F2E8;
+  --cream-warm:   #F2E8D5;
+  --cream-deep:   #E8DAC4;
+  --gold:         #C8A45E;
+  --gold-light:   #DBBE88;
+  --dark:         #161610;
+  --dark-mid:     #222218;
+  --dark-soft:    #2E2E22;
+  --text-body:    #3A3A2E;
+  --text-muted:   #7A7A68;
+  --white:        #FFFFFF;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--text-body);
+  cursor: none;
+  overflow-x: hidden;
+  padding-bottom: 58px;
+}
+
+/* ── VIDEO SECTION ── */
+#video-section { background:var(--dark-mid); padding:0; position:relative; overflow:hidden; }
+.video-grid { display:grid; grid-template-columns:1fr 1fr; height:460px; }
+.video-cell { position:relative; overflow:hidden; }
+.video-cell video { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.5) saturate(.7); transition:filter .6s ease; }
+.video-cell:hover video { filter:brightness(.72) saturate(1.1); }
+.video-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:2.5rem 3rem; background:linear-gradient(180deg,transparent 40%,rgba(22,22,16,.75)); pointer-events:none; }
+.video-label { font-size:.55rem; letter-spacing:.35em; text-transform:uppercase; color:rgba(248,242,232,.45); font-family:'Sora',sans-serif; margin-bottom:.5rem; }
+.video-title { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; font-style:italic; color:var(--cream); line-height:1.2; }
+
+/* ── GLASSES 3D ── */
+#glasses-3d { background:var(--dark); padding:100px 7%; display:flex; flex-direction:column; align-items:center; position:relative; overflow:hidden; }
+#glasses-3d::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,rgba(92,107,58,.12),transparent 70%); pointer-events:none; }
+#glasses-canvas-wrap { width:100%; max-width:680px; height:400px; position:relative; }
+#glasses-canvas { width:100%; height:100%; display:block; }
+.g3d-label { margin-top:1.5rem; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(248,242,232,.28); font-family:'Sora',sans-serif; text-align:center; }
+.g3d-hint { display:flex; align-items:center; gap:.5rem; color:rgba(248,242,232,.2); font-size:.7rem; margin-top:.4rem; }
+.g3d-arrow { font-size:1rem; animation:scrollHint 2s ease-in-out infinite; }
+@keyframes scrollHint { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+/* ── WELCOME POPUP ── */
+#welcome-popup { position:fixed; inset:0; z-index:99990; display:flex; align-items:center; justify-content:center; background:rgba(22,22,16,.75); backdrop-filter:blur(12px); animation:wpFadeIn .6s ease both; }
+@keyframes wpFadeIn { from{opacity:0}to{opacity:1} }
+#welcome-popup.hide { animation:wpFadeOut .5s ease both; pointer-events:none; }
+@keyframes wpFadeOut { to{opacity:0} }
+.wp-card { background:var(--cream); border-radius:24px; padding:3rem 3.5rem; max-width:420px; width:90%; text-align:center; box-shadow:0 40px 100px rgba(0,0,0,.35); animation:wpSlide .7s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes wpSlide { from{transform:translateY(40px) scale(.9);opacity:0}to{transform:none;opacity:1} }
+.wp-olive { font-size:3.2rem; display:block; margin-bottom:1rem; animation:oliveFloat 3s ease-in-out infinite; }
+@keyframes oliveFloat { 0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-10px) rotate(5deg)} }
+.wp-title { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; color:var(--dark); margin-bottom:.5rem; }
+.wp-sub { font-size:.83rem; color:var(--text-muted); margin-bottom:1.8rem; line-height:1.6; }
+.wp-btn { background:var(--olive); color:var(--white); border:none; border-radius:50px; padding:14px 36px; font-family:'Inter',sans-serif; font-size:.9rem; font-weight:500; cursor:pointer; transition:all .3s cubic-bezier(.34,1.56,.64,1); }
+.wp-btn:hover { background:var(--olive-dark); transform:scale(1.05); box-shadow:0 8px 24px rgba(92,107,58,.4); }
+.wp-skip { margin-top:1rem; font-size:.72rem; color:var(--text-muted); cursor:pointer; opacity:.5; }
+.wp-skip:hover { opacity:1; }
+
+/* ── LIGHTBOX ── */
+#lightbox { position:fixed; inset:0; z-index:99980; background:rgba(22,22,16,.92); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s ease; backdrop-filter:blur(16px); }
+#lightbox.open { opacity:1; pointer-events:all; }
+#lightbox img { max-width:90vw; max-height:85vh; border-radius:12px; box-shadow:0 40px 100px rgba(0,0,0,.5); transform:scale(.92); transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
+#lightbox.open img { transform:scale(1); }
+#lb-close { position:absolute; top:24px; right:28px; color:white; font-size:2rem; cursor:pointer; background:rgba(255,255,255,.1); border:none; border-radius:50%; width:48px; height:48px; display:flex; align-items:center; justify-content:center; transition:background .2s,transform .2s; }
+#lb-close:hover { background:rgba(255,255,255,.2); transform:rotate(90deg); }
+#lb-caption { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); color:rgba(255,255,255,.55); font-size:.78rem; font-family:'Cormorant Garamond',serif; font-style:italic; letter-spacing:.1em; }
+
+/* ── AI AGENT ── */
+#ai-agent { position:fixed; bottom:28px; right:28px; z-index:900; display:flex; flex-direction:column; align-items:center; gap:6px; }
+#ai-bubble { background:var(--white); color:var(--dark); padding:9px 16px; border-radius:18px 18px 18px 4px; font-size:.72rem; font-weight:600; box-shadow:0 8px 32px rgba(22,22,16,.18); white-space:nowrap; opacity:0; transform:translateY(8px) scale(.9); transition:all .4s cubic-bezier(.34,1.56,.64,1); pointer-events:none; position:relative; }
+#ai-bubble::after { content:''; position:absolute; bottom:-7px; left:16px; border:7px solid transparent; border-top-color:var(--white); border-bottom:none; }
+#ai-bubble.show { opacity:1; transform:none; pointer-events:auto; }
+#chat-btn { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg,var(--olive-dark),var(--olive)); border:none; cursor:none; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(92,107,58,.5); transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s; animation:aiBtnPulse 3s ease-in-out infinite; }
+@keyframes aiBtnPulse { 0%,100%{box-shadow:0 6px 24px rgba(92,107,58,.5)}50%{box-shadow:0 6px 36px rgba(92,107,58,.75),0 0 0 10px rgba(92,107,58,.08)} }
+#chat-btn:hover { transform:scale(1.12); }
+
+/* ── TOAST ── */
+#toast { position:fixed; bottom:28px; left:28px; z-index:9990; background:var(--dark); color:var(--cream); padding:14px 20px; border-radius:12px; font-size:.8rem; display:flex; align-items:center; gap:10px; box-shadow:0 12px 40px rgba(0,0,0,.3); transform:translateY(80px); opacity:0; transition:all .5s cubic-bezier(.34,1.56,.64,1); max-width:280px; }
+#toast.show { transform:translateY(0); opacity:1; }
+.toast-dot { width:8px; height:8px; background:#86efac; border-radius:50%; flex-shrink:0; animation:blink 1.5s infinite; }
+
+/* ── FLOAT PARTICLES ── */
+.float-particle { position:fixed; pointer-events:none; z-index:0; opacity:0; animation:floatUp 8s ease-in-out infinite; }
+@keyframes floatUp { 0%{opacity:0;transform:translateY(0) rotate(0deg)}15%{opacity:.3}85%{opacity:.2}100%{opacity:0;transform:translateY(-100vh) rotate(360deg)} }
+
+/* ── COLLECTIONS hover ── */
+.coll-item img { transition:transform 1.2s cubic-bezier(.25,.46,.45,.94),filter .5s; }
+.coll-item:hover img { transform:scale(1.1); filter:brightness(.65) saturate(1.1); }
+.coll-item { cursor:pointer; }
+.services-banner img { animation:kenBurns 18s ease-in-out infinite alternate; }
+@keyframes kenBurns { from{transform:scale(1) translateX(0)}to{transform:scale(1.08) translateX(-2%)} }
+
+/* ── GRAIN ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 99998;
+  opacity: .032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain .4s steps(1) infinite;
+}
+@keyframes grain {
+  0%  { transform: translate(0,0) }
+  25% { transform: translate(-3px, 2px) }
+  50% { transform: translate(2px,-3px) }
+  75% { transform: translate(3px, 3px) }
+}
+
+/* ── CURSOR ── */
+#cur-dot {
+  position: fixed; width: 7px; height: 7px;
+  background: var(--terra); border-radius: 50%;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%);
+  transition: width .15s, height .15s, background .2s, opacity .2s;
+}
+#cur-ring {
+  position: fixed; width: 38px; height: 38px;
+  border: 1.5px solid rgba(184,92,60,.45);
+  border-radius: 50%;
+  pointer-events: none; z-index: 99997;
+  transform: translate(-50%,-50%);
+  transition: width .4s cubic-bezier(.25,.46,.45,.94),
+              height .4s cubic-bezier(.25,.46,.45,.94),
+              border-color .25s, border-radius .35s;
+}
+body.c-hover #cur-dot  { width: 0; height: 0; }
+body.c-hover #cur-ring { width: 56px; height: 56px; border-color: var(--terra); border-radius: 6px; }
+body.c-text  #cur-ring { width: 3px; height: 26px; border-radius: 2px; border-color: var(--olive); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 6%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 80px;
+  transition: height .35s ease, background .4s ease, box-shadow .4s ease;
+}
+nav.scrolled {
+  height: 64px;
+  background: rgba(248,242,232,.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 2px 40px rgba(22,22,16,.07);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem; font-weight: 500;
+  letter-spacing: .4em; text-transform: uppercase;
+  color: var(--olive-deep); text-decoration: none;
+  position: relative; display: flex; align-items: center; gap: .7rem;
+}
+.nav-logo-olive { font-size: .55rem; letter-spacing: .1em; color: var(--terra); font-family: 'Sora', sans-serif; font-weight: 300; display: block; }
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--text-body); text-decoration: none; font-weight: 500;
+  position: relative; padding-bottom: 3px;
+  transition: color .25s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1.5px; background: var(--terra);
+  transition: width .35s cubic-bezier(.25,.46,.45,.94);
+}
+.nav-links a:hover { color: var(--terra); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-rdv {
+  font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--white); background: var(--olive-dark);
+  padding: 12px 26px; border-radius: 40px; text-decoration: none; font-weight: 500;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, background .25s;
+  position: relative; overflow: hidden;
+}
+.nav-rdv::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.14), transparent);
+  transform: translateX(-100%) skewX(-20deg);
+  transition: transform .5s ease;
+}
+.nav-rdv:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(58,68,37,.4); background: var(--olive); }
+.nav-rdv:hover::before { transform: translateX(200%) skewX(-20deg); }
+
+/* Burger */
+.burger { display: none; flex-direction: column; gap: 5px; cursor: none; padding: 6px; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--dark); border-radius: 2px; transition: all .35s cubic-bezier(.25,.46,.45,.94); }
+.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mob-menu {
+  display: none; position: fixed;
+  inset: 0; background: var(--cream); z-index: 999;
+  flex-direction: column; align-items: center; justify-content: center; gap: 2.2rem;
+  opacity: 0; transform: translateY(-8px);
+  transition: opacity .3s, transform .3s;
+}
+.mob-menu.open { display: flex; opacity: 1; transform: translateY(0); }
+.mob-menu a { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--dark); text-decoration: none; transition: color .2s; }
+.mob-menu a:hover { color: var(--terra); }
+
+/* ── HERO ── */
+#hero {
+  height: 100vh; min-height: 720px;
+  position: relative; display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: -8%;
+  background: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=1920&auto=format&fit=crop&q=90') center/cover no-repeat;
+  will-change: transform;
+  transform: scale(1.08) translateY(0);
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(22,22,16,.88) 0%,
+    rgba(37,43,23,.72) 38%,
+    rgba(90,60,30,.35) 70%,
+    rgba(184,92,60,.15) 100%
+  );
+}
+
+/* Floating leaf SVG Palestine */
+.hero-leaf {
+  position: absolute; top: 12%; right: 8%; z-index: 2;
+  opacity: .18; pointer-events: none;
+  animation: leafFloat 6s ease-in-out infinite;
+}
+@keyframes leafFloat {
+  0%,100% { transform: translateY(0) rotate(-8deg); }
+  50%      { transform: translateY(-18px) rotate(-4deg); }
+}
+
+canvas#hero-canvas {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .55;
+}
+
+.hero-content {
+  position: relative; z-index: 3;
+  padding: 0 7% 9vh;
+  max-width: 820px;
+}
+
+.hero-pretitle {
+  display: inline-flex; align-items: center; gap: .9rem;
+  font-family: 'Sora', sans-serif;
+  font-size: .6rem; font-weight: 300; letter-spacing: .38em; text-transform: uppercase;
+  color: rgba(248,242,232,.5); margin-bottom: 1.6rem;
+  opacity: 0; animation: riseUp .9s .1s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+.hero-pretitle-line { width: 32px; height: 1px; background: var(--terra); flex-shrink: 0; transform: scaleX(0); transform-origin: left; animation: lineIn .5s .9s ease forwards; }
+@keyframes lineIn { to { transform: scaleX(1); } }
+
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.4rem, 8vw, 7rem);
+  font-weight: 300; line-height: 1.02;
+  color: var(--white); margin-bottom: 1.6rem;
+  opacity: 0; animation: riseUp 1s .3s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+.hero-h1 em {
+  font-style: italic;
+  background: linear-gradient(110deg, #C8D8A0, #E2C98A, #C8D8A0);
+  background-size: 220%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: shimmer 3.5s linear infinite;
+}
+@keyframes shimmer { to { background-position: 220% center; } }
+
+.hero-sub {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.02rem; font-weight: 200; line-height: 1.9;
+  color: rgba(248,242,232,.68); max-width: 520px; margin-bottom: 2.6rem;
+  opacity: 0; animation: riseUp .9s .55s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+
+.hero-ctas {
+  display: flex; gap: 1.1rem; flex-wrap: wrap;
+  opacity: 0; animation: riseUp .9s .75s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.btn-terra {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: var(--terra); color: var(--white);
+  padding: 16px 38px; border-radius: 50px;
+  font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 500;
+  text-decoration: none; border: none; cursor: none;
+  position: relative; overflow: hidden;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.btn-terra .arr { display: inline-block; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+.btn-terra:hover .arr { transform: translateX(5px); }
+.btn-terra::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.22), transparent);
+  transform: translateX(-100%) skewX(-15deg);
+  transition: transform .5s ease;
+}
+.btn-terra:hover::before { transform: translateX(200%) skewX(-15deg); }
+.btn-terra:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 18px 40px rgba(184,92,60,.45); }
+
+.btn-outline {
+  display: inline-flex; align-items: center;
+  background: transparent; color: rgba(255,255,255,.82);
+  padding: 16px 38px; border-radius: 50px;
+  font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 400;
+  text-decoration: none; border: 1px solid rgba(255,255,255,.32); cursor: none;
+  backdrop-filter: blur(6px);
+  transition: all .35s cubic-bezier(.25,.46,.45,.94);
+}
+.btn-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); transform: translateY(-5px); }
+
+.hero-scroll-hint {
+  position: absolute; bottom: 3vh; right: 7%;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  z-index: 3; opacity: 0; animation: riseUp 1s 1.1s ease forwards;
+}
+.hero-scroll-hint span { font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: rgba(248,242,232,.35); writing-mode: vertical-rl; }
+.scroll-bar { width: 1px; height: 64px; position: relative; overflow: hidden; background: rgba(248,242,232,.1); }
+.scroll-bar::after {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 40%;
+  background: var(--terra); animation: scrollFall 1.6s 1.5s ease-in-out infinite;
+}
+@keyframes scrollFall {
+  0%   { top: -40%; }
+  100% { top: 140%; }
+}
+
+/* ── MARQUEE ── */
+.marquee-band {
+  background: var(--olive-deep); padding: 20px 0; overflow: hidden;
+  position: relative; z-index: 10;
+}
+.marquee-track {
+  display: flex; white-space: nowrap;
+  animation: mq 24s linear infinite;
+}
+.mq-item {
+  display: inline-flex; align-items: center; gap: 1.8rem;
+  padding: 0 2.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 300; font-style: italic;
+  color: rgba(248,242,232,.55); letter-spacing: .06em;
+}
+.mq-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--terra); flex-shrink: 0; }
+.mq-leaf { font-size: .9rem; opacity: .6; }
+@keyframes mq { to { transform: translateX(-50%); } }
+
+/* ── STATS BAND ── */
+.stats-band {
+  background: var(--dark); padding: 80px 7%;
+  position: relative; overflow: hidden;
+}
+.stats-band::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(92,107,58,.14), transparent);
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 2px;
+  position: relative; z-index: 1;
+}
+.stat-card {
+  padding: 48px 36px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,.04);
+  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  cursor: none;
+}
+.stat-card:last-child { border-right: none; }
+.stat-card:hover { transform: translateY(-6px); }
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; font-weight: 300; color: var(--cream);
+  display: block; line-height: 1; margin-bottom: .5rem;
+}
+.stat-u { font-size: 2rem; color: var(--terra); vertical-align: super; margin-left: 1px; }
+.stat-l { font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(248,242,232,.3); }
+
+/* ── COMMON ── */
+.sec-label {
+  display: block; font-family: 'Sora', sans-serif;
+  font-size: .6rem; letter-spacing: .35em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: 1rem;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+  font-weight: 400; line-height: 1.12; color: var(--dark);
+}
+.sec-title-light { color: var(--cream); }
+
+/* ── REVEAL ── */
+.rv  { opacity: 0; transform: translateY(44px); transition: opacity .9s cubic-bezier(.25,.46,.45,.94), transform .9s cubic-bezier(.25,.46,.45,.94); }
+.rvl { opacity: 0; transform: translateX(-52px); transition: opacity .85s cubic-bezier(.25,.46,.45,.94), transform .85s cubic-bezier(.25,.46,.45,.94); }
+.rvr { opacity: 0; transform: translateX(52px); transition: opacity .85s cubic-bezier(.25,.46,.45,.94), transform .85s cubic-bezier(.25,.46,.45,.94); }
+.rvs { opacity: 0; transform: scale(.9); transition: opacity .75s cubic-bezier(.25,.46,.45,.94), transform .75s cubic-bezier(.25,.46,.45,.94); }
+.rv.on,.rvl.on,.rvr.on,.rvs.on { opacity: 1; transform: none; }
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+/* ── WAVE DIVIDERS ── */
+.wave { display: block; line-height: 0; position: relative; }
+.wave svg { display: block; width: 100%; }
+
+/* ── À PROPOS — PALESTINE STORY ── */
+#apropos { background: var(--white); padding: 130px 7%; }
+.apropos-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 90px; align-items: center; }
+
+.apropos-visuel { position: relative; }
+.apropos-img-main {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover;
+  border-radius: 8px; display: block;
+  box-shadow: 0 32px 80px rgba(22,22,16,.14);
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94), box-shadow .6s;
+}
+.apropos-visuel:hover .apropos-img-main {
+  transform: scale(1.02) rotate(.5deg);
+  box-shadow: 0 44px 100px rgba(22,22,16,.2);
+}
+
+.apropos-frame {
+  position: absolute; top: -20px; left: -20px; right: 20px; bottom: 20px;
+  border: 1.5px solid rgba(92,107,58,.3); border-radius: 10px; z-index: -1;
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.apropos-visuel:hover .apropos-frame { transform: translate(-6px,-6px) rotate(-1deg); }
+
+.apropos-badge {
+  position: absolute; bottom: -24px; right: -24px;
+  width: 110px; height: 110px; border-radius: 50%;
+  background: var(--terra); color: var(--white);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; text-align: center;
+  box-shadow: 0 12px 36px rgba(184,92,60,.4);
+  animation: badgeSpin 20s linear infinite;
+}
+.apropos-badge .badge-n { font-size: 2.2rem; font-weight: 500; line-height: 1; }
+.apropos-badge .badge-l { font-size: .5rem; letter-spacing: .18em; text-transform: uppercase; opacity: .85; }
+@keyframes badgeSpin { to { transform: rotate(360deg); } }
+/* Inner stays upright */
+.apropos-badge-inner { animation: badgeSpin 20s linear infinite reverse; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* Palestine symbol */
+.olive-branch {
+  display: block; text-align: center; font-size: 2.2rem; margin-bottom: 1.2rem; opacity: .65;
+  animation: oliveSway 4s ease-in-out infinite;
+}
+@keyframes oliveSway {
+  0%,100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(4deg); }
+}
+
+.apropos-text .sec-title { margin-bottom: 1.4rem; }
+.apropos-text p {
+  font-family: 'Sora', sans-serif; font-size: .94rem; line-height: 1.9;
+  color: var(--text-muted); font-weight: 300; margin-bottom: 1.2rem;
+}
+.apropos-text p strong { color: var(--text-body); font-weight: 500; }
+.apropos-text p em { font-style: italic; color: var(--terra); }
+
+.palestine-quote {
+  margin: 2rem 0; padding: 1.4rem 1.6rem 1.4rem 2rem;
+  border-left: 3px solid var(--olive);
+  background: linear-gradient(120deg, rgba(92,107,58,.06), transparent);
+  border-radius: 0 8px 8px 0;
+}
+.palestine-quote p {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.22rem; font-style: italic;
+  color: var(--olive-dark); line-height: 1.65; margin: 0;
+}
+.palestine-quote cite {
+  display: block; font-family: 'Sora', sans-serif;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text-muted); margin-top: .6rem; font-style: normal;
+}
+
+.signature { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; color: var(--olive); display: block; margin-top: 1.2rem; }
+
+/* ── SERVICES ── */
+#services { background: var(--cream); padding: 130px 7%; }
+.services-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 4rem; flex-wrap: wrap; }
+.services-sub { font-family: 'Sora', sans-serif; font-size: .9rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; max-width: 360px; }
+
+/* Services visual banner */
+.services-banner {
+  width: 100%; height: 320px; border-radius: 16px; overflow: hidden;
+  position: relative; margin-bottom: 3.5rem;
+}
+.services-banner img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: brightness(.78) saturate(.9);
+  transition: transform .8s cubic-bezier(.25,.46,.45,.94);
+}
+.services-banner:hover img { transform: scale(1.04); }
+.services-banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(22,22,16,.65) 0%, transparent 50%, rgba(184,92,60,.15) 100%);
+}
+.services-banner-text {
+  position: absolute; bottom: 2.5rem; left: 3rem; z-index: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 300; font-style: italic;
+  color: var(--white); line-height: 1.2;
+}
+
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
+.svc-card {
+  background: var(--white); border-radius: 14px; padding: 2.6rem 2.2rem;
+  position: relative; overflow: hidden; cursor: none;
+  transition: transform .5s cubic-bezier(.25,.46,.45,.94), box-shadow .5s;
+  box-shadow: 0 4px 28px rgba(22,22,16,.05);
+}
+.svc-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--olive), var(--terra));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+}
+.svc-card:hover { transform: translateY(-14px) rotateX(3deg); box-shadow: 0 32px 64px rgba(22,22,16,.12); }
+.svc-card:hover::before { transform: scaleX(1); }
+
+.svc-icon { font-size: 2rem; margin-bottom: 1.3rem; display: block; transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+.svc-card:hover .svc-icon { transform: scale(1.15) rotate(-8deg); }
+.svc-num { position: absolute; top: 1.5rem; right: 1.8rem; font-family: 'Cormorant Garamond', serif; font-size: 3.8rem; font-weight: 300; color: rgba(92,107,58,.07); line-height: 1; }
+.svc-card:hover .svc-num { color: rgba(92,107,58,.13); }
+.svc-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--dark); margin-bottom: .7rem; }
+.svc-desc { font-size: .85rem; line-height: 1.75; color: var(--text-muted); font-weight: 300; }
+
+/* ── COLLECTIONS — GALERIE IMMERSIVE ── */
+#collections { background: var(--dark); padding: 130px 7%; }
+.coll-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem; }
+.coll-sub { font-family: 'Sora', sans-serif; font-size: .88rem; color: rgba(248,242,232,.42); line-height: 1.8; font-weight: 300; max-width: 320px; }
+
+.coll-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 280px 280px;
+  gap: 10px;
+}
+.coll-item {
+  position: relative; overflow: hidden; border-radius: 8px; cursor: none;
+}
+.coll-item:nth-child(1) { grid-row: 1 / 3; }
+.coll-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transform: scale(1.06);
+  transition: transform .8s cubic-bezier(.25,.46,.45,.94), filter .5s;
+  filter: brightness(.75) saturate(.8);
+}
+.coll-item:hover img { transform: scale(1.14); filter: brightness(.85) saturate(1.1); }
+.coll-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(22,22,16,.9) 0%, transparent 55%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 1.8rem 1.5rem;
+  opacity: 0; transform: translateY(6px);
+  transition: all .4s cubic-bezier(.25,.46,.45,.94);
+}
+.coll-item:hover .coll-overlay { opacity: 1; transform: translateY(0); }
+.coll-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--white); }
+.coll-type { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--olive-light); margin-top: 4px; }
+
+/* ── PALESTINE FEATURE SECTION ── */
+#palestine {
+  background: var(--olive-deep);
+  padding: 100px 7%;
+  position: relative; overflow: hidden;
+}
+#palestine::before {
+  content: ''; position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
+  opacity: .07;
+}
+.pal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+.pal-text .sec-label { color: var(--gold-light); }
+.pal-text .sec-title { color: var(--cream); margin-bottom: 1.4rem; }
+.pal-text p { font-family: 'Sora', sans-serif; font-size: .94rem; line-height: 1.9; color: rgba(248,242,232,.6); font-weight: 300; margin-bottom: 1rem; }
+.pal-text p strong { color: rgba(248,242,232,.9); font-weight: 500; }
+.pal-visual { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.pal-olive-art {
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(ellipse at 40% 35%, rgba(138,159,96,.25), rgba(58,68,37,.5));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 7rem;
+  border: 1px solid rgba(200,164,94,.2);
+  box-shadow: 0 0 80px rgba(92,107,58,.2), inset 0 0 40px rgba(92,107,58,.1);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 60px rgba(92,107,58,.15), inset 0 0 30px rgba(92,107,58,.08); }
+  50%      { box-shadow: 0 0 120px rgba(92,107,58,.3), inset 0 0 60px rgba(92,107,58,.15); }
+}
+.pal-caption { font-family: 'Cormorant Garamond', serif; font-size: .85rem; font-style: italic; color: rgba(248,242,232,.35); letter-spacing: .12em; text-align: center; }
+.pal-flags { display: flex; gap: 1rem; }
+.pal-flag-bar { height: 4px; border-radius: 2px; flex: 1; }
+.pal-flag-bar:nth-child(1) { background: #000; }
+.pal-flag-bar:nth-child(2) { background: #fff; }
+.pal-flag-bar:nth-child(3) { background: #009736; }
+.pal-flag-bar:nth-child(4) { background: #CE1126; }
+
+/* ── POURQUOI NOUS ── */
+#pourquoi { background: var(--cream-warm); padding: 130px 7%; }
+.pourquoi-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+.pourquoi-left .sec-title { margin-bottom: 1.4rem; }
+.pourquoi-left p { font-family: 'Sora', sans-serif; font-size: .93rem; line-height: 1.85; color: var(--text-muted); font-weight: 300; }
+.pourquoi-items { display: flex; flex-direction: column; gap: 1rem; }
+.pq-item {
+  display: flex; gap: 1.4rem; align-items: flex-start;
+  padding: 1.7rem 1.8rem; background: var(--white); border-radius: 12px;
+  position: relative; overflow: hidden; cursor: none;
+  transition: transform .4s cubic-bezier(.25,.46,.45,.94), box-shadow .4s;
+}
+.pq-item::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--olive), var(--terra));
+  transform: scaleY(0); transform-origin: top;
+  transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+}
+.pq-item:hover { transform: translateX(8px); box-shadow: 0 12px 36px rgba(22,22,16,.08); }
+.pq-item:hover::before { transform: scaleY(1); }
+.pq-n { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: var(--olive); opacity: .22; line-height: 1; flex-shrink: 0; transition: opacity .3s; }
+.pq-item:hover .pq-n { opacity: .5; }
+.pq-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: .35rem; color: var(--dark); }
+.pq-desc { font-size: .83rem; line-height: 1.72; color: var(--text-muted); font-weight: 300; }
+
+/* ── TEMOIGNAGES ── */
+#temoignages { background: var(--white); padding: 130px 7%; }
+.temo-header { text-align: center; max-width: 540px; margin: 0 auto 4rem; }
+.temo-header .sec-title { color: var(--dark); }
+.temo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; }
+.temo-avatar {
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+  margin-bottom: 1.2rem; display: block;
+  border: 2px solid var(--cream-deep);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.temo-card:hover .temo-avatar { transform: scale(1.08); }
+.temo-card {
+  background: var(--cream); border-radius: 14px; padding: 2.4rem 2.2rem;
+  position: relative; overflow: hidden; cursor: none;
+  transition: transform .45s cubic-bezier(.25,.46,.45,.94), box-shadow .45s;
+}
+.temo-card::before {
+  content: '\201C';
+  font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 300;
+  color: rgba(92,107,58,.07); line-height: .7;
+  position: absolute; top: 1.2rem; left: 1.4rem;
+}
+.temo-card:hover { transform: translateY(-12px) rotateX(3deg); box-shadow: 0 30px 64px rgba(22,22,16,.1); }
+.stars { color: var(--terra); font-size: .7rem; letter-spacing: 5px; margin-bottom: 1.2rem; display: block; }
+.temo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; line-height: 1.75; color: var(--dark-mid); margin-bottom: 1.4rem; position: relative; z-index: 1; }
+.temo-author { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
+.temo-bar { height: 2px; margin-top: 1.2rem; background: linear-gradient(90deg, var(--olive), transparent); transform: scaleX(0); transform-origin: left; transition: transform .5s .1s; }
+.temo-card:hover .temo-bar { transform: scaleX(1); }
+
+/* ── LOCALISATION ── */
+#localisation { background: var(--cream); padding: 130px 7%; }
+.loca-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 70px; align-items: start; margin-top: 3.5rem; }
+.loca-infos { display: flex; flex-direction: column; gap: 2rem; }
+.loca-item { display: flex; gap: 1.3rem; align-items: flex-start; }
+.loca-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(92,107,58,.1); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; transition: background .25s, transform .3s; }
+.loca-item:hover .loca-icon { background: rgba(92,107,58,.2); transform: scale(1.1) rotate(-5deg); }
+.loca-lbl { font-size: .58rem; letter-spacing: .24em; text-transform: uppercase; color: var(--terra); margin-bottom: .35rem; }
+.loca-val { font-size: .93rem; line-height: 1.65; color: var(--dark); }
+.loca-val a { color: var(--olive); text-decoration: none; transition: color .2s; }
+.loca-val a:hover { color: var(--terra); }
+
+.hours { display: grid; grid-template-columns: auto 1fr; gap: .4rem 1.4rem; margin-top: .5rem; }
+.h-d { font-size: .8rem; color: var(--text-muted); font-weight: 300; }
+.h-t { font-size: .8rem; color: var(--dark); font-weight: 500; }
+.h-closed { color: var(--terra); }
+
+.map-3d {
+  border-radius: 16px; overflow: hidden; height: 440px;
+  box-shadow: 0 28px 72px rgba(22,22,16,.13);
+  transform: perspective(900px) rotateY(-4deg) scale(.98);
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94), box-shadow .6s;
+}
+.map-3d:hover { transform: perspective(900px) rotateY(0) scale(1); box-shadow: 0 40px 90px rgba(22,22,16,.18); }
+.map-3d iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* ── CONTACT ── */
+#contact { background: var(--dark); padding: 130px 7%; }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; margin-top: 3.5rem; align-items: start; }
+.contact-form { display: flex; flex-direction: column; gap: 1.3rem; }
+.f-group { display: flex; flex-direction: column; gap: .55rem; position: relative; }
+.f-label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(248,242,232,.38); }
+.f-input {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(248,242,232,.1);
+  border-radius: 8px; padding: 15px 18px; color: var(--cream);
+  font-family: 'Inter', sans-serif; font-size: .9rem;
+  outline: none; transition: border-color .3s, background .3s, box-shadow .3s;
+}
+.f-input:focus { border-color: var(--olive-light); background: rgba(255,255,255,.07); box-shadow: 0 0 0 3px rgba(92,107,58,.14); }
+.f-input::placeholder { color: rgba(248,242,232,.2); }
+.f-line { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--olive-light); transform: scaleX(0); transform-origin: left; transition: transform .35s; pointer-events: none; }
+.f-group:focus-within .f-line { transform: scaleX(1); }
+textarea.f-input { resize: vertical; min-height: 130px; }
+
+.contact-right { display: flex; flex-direction: column; gap: 2.2rem; }
+.c-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+.c-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.c-lbl { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(248,242,232,.3); margin-bottom: .35rem; }
+.c-val { font-size: .93rem; color: rgba(248,242,232,.75); font-weight: 300; }
+.c-val a { color: var(--olive-light); text-decoration: none; transition: color .2s; }
+.c-val a:hover { color: var(--cream); }
+
+.wa-cta {
+  display: inline-flex; align-items: center; gap: .9rem;
+  background: #25D366; color: var(--white);
+  padding: 14px 28px; border-radius: 50px;
+  font-size: .8rem; font-weight: 500; text-decoration: none;
+  margin-top: .5rem;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  position: relative; overflow: hidden;
+}
+.wa-cta::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,.15), transparent); transform: translateX(-100%); transition: transform .4s; }
+.wa-cta:hover::before { transform: translateX(100%); }
+.wa-cta:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(37,211,102,.38); }
+.wa-cta svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--olive-deep); padding: 52px 7%;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;
+  border-top: 1px solid rgba(248,242,232,.05);
+}
+.f-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; letter-spacing: .4em; text-transform: uppercase; color: rgba(248,242,232,.65); }
+.f-sub { font-size: .6rem; letter-spacing: .22em; color: rgba(248,242,232,.3); }
+.f-links { display: flex; gap: 2rem; }
+.f-links a { font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(248,242,232,.3); text-decoration: none; transition: color .2s; }
+.f-links a:hover { color: rgba(248,242,232,.65); }
+.f-olive { font-size: 1.4rem; opacity: .4; }
+
+/* ── WA FLOAT ── */
+#wa-float {
+  position: fixed; bottom: 104px; right: 28px; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,.4);
+  animation: waPulse 2.6s infinite;
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+#wa-float:hover { transform: scale(1.12); box-shadow: 0 12px 32px rgba(37,211,102,.55); }
+#wa-float svg { width: 28px; height: 28px; fill: white; }
+@keyframes waPulse {
+  0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,.4); }
+  50% { box-shadow: 0 6px 32px rgba(37,211,102,.65), 0 0 0 8px rgba(37,211,102,.08); }
+}
+
+/* ── CHATBOT ── */
+#chat-tip {
+  position: fixed; bottom: 174px; right: 28px; z-index: 895;
+  background: var(--white); color: var(--dark);
+  padding: 12px 18px; border-radius: 20px 20px 4px 20px;
+  font-size: .8rem; font-weight: 500;
+  box-shadow: 0 12px 40px rgba(22,22,16,.15);
+  cursor: none; white-space: nowrap;
+  opacity: 0; transform: translateY(10px) scale(.95);
+  transition: all .35s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none;
+}
+#chat-tip.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+#chat-btn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--olive); border: none; cursor: none;
+  display: flex; align-items: center; justify-content: center; font-size: 1.35rem;
+  box-shadow: 0 6px 24px rgba(92,107,58,.45);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+#chat-btn:hover { transform: scale(1.12) rotate(12deg); box-shadow: 0 12px 30px rgba(92,107,58,.55); }
+
+#chat-box {
+  position: fixed; bottom: 104px; right: 28px; z-index: 901;
+  width: 360px;
+  background: var(--white); border-radius: 20px;
+  box-shadow: 0 28px 72px rgba(22,22,16,.22);
+  display: flex; flex-direction: column; overflow: hidden;
+  opacity: 0; transform: translateY(20px) scale(.93); pointer-events: none;
+  transition: opacity .4s cubic-bezier(.25,.46,.45,.94), transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+#chat-box.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+
+.ch-head {
+  background: linear-gradient(135deg, var(--olive-dark), var(--olive));
+  padding: 18px 20px; display: flex; align-items: center; gap: 12px;
+  position: relative; overflow: hidden;
+}
+.ch-head::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 0%, rgba(255,255,255,.1), transparent 60%); }
+.ch-av { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; position: relative; z-index: 1; }
+.ch-info { flex: 1; position: relative; z-index: 1; }
+.ch-name { color: var(--white); font-weight: 600; font-size: .95rem; }
+.ch-status { color: rgba(255,255,255,.6); font-size: .67rem; margin-top: 2px; display: flex; align-items: center; gap: 5px; }
+.ch-dot { width: 6px; height: 6px; background: #86efac; border-radius: 50%; animation: blink 1.8s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:.3} }
+.ch-close { background: rgba(255,255,255,.12); border: none; color: white; width: 30px; height: 30px; border-radius: 50%; cursor: none; display: flex; align-items: center; justify-content: center; transition: background .2s; position: relative; z-index: 1; font-size: 1rem; }
+.ch-close:hover { background: rgba(255,255,255,.24); }
+
+.ch-msgs { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; max-height: 280px; scroll-behavior: smooth; }
+.ch-msgs::-webkit-scrollbar { width: 3px; }
+.ch-msgs::-webkit-scrollbar-thumb { background: var(--cream-deep); border-radius: 2px; }
+
+.msg { max-width: 83%; padding: 10px 14px; border-radius: 18px; font-size: .83rem; line-height: 1.55; animation: msgIn .3s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes msgIn { from { opacity: 0; transform: scale(.84) translateY(8px); } to { opacity: 1; transform: none; } }
+.msg-bot { background: var(--cream); color: var(--dark); border-bottom-left-radius: 4px; align-self: flex-start; }
+.msg-usr { background: var(--olive); color: var(--white); border-bottom-right-radius: 4px; align-self: flex-end; }
+
+.typing { display: flex; gap: 4px; padding: 10px 14px; background: var(--cream); border-radius: 18px 18px 18px 4px; align-self: flex-start; width: fit-content; }
+.t { width: 6px; height: 6px; background: var(--text-muted); border-radius: 50%; animation: tb 1.2s infinite ease-in-out; }
+.t:nth-child(2){animation-delay:.2s}.t:nth-child(3){animation-delay:.4s}
+@keyframes tb { 0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-5px);opacity:1} }
+
+.ch-sugs { padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 7px; border-top: 1px solid var(--cream-deep); }
+.sug { background: var(--cream); border: 1px solid rgba(92,107,58,.2); border-radius: 20px; padding: 7px 13px; font-size: .71rem; color: var(--dark); cursor: none; transition: all .25s cubic-bezier(.34,1.56,.64,1); font-family: 'Inter', sans-serif; }
+.sug:hover { background: var(--olive); color: var(--white); border-color: var(--olive); transform: translateY(-3px) scale(1.04); }
+
+.ch-inp { padding: 12px 16px; display: flex; gap: 9px; align-items: center; border-top: 1px solid var(--cream-deep); }
+#ci { flex: 1; border: none; outline: none; background: var(--cream); border-radius: 25px; padding: 10px 16px; font-size: .83rem; font-family: 'Inter', sans-serif; color: var(--dark); cursor: text; }
+#ci::placeholder { color: var(--text-muted); }
+#cs { width: 38px; height: 38px; border-radius: 50%; background: var(--olive); border: none; cursor: none; display: flex; align-items: center; justify-content: center; transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; flex-shrink: 0; }
+#cs:hover { transform: scale(1.16) rotate(-12deg); background: var(--olive-dark); box-shadow: 0 6px 18px rgba(92,107,58,.45); }
+#cs svg { width: 15px; height: 15px; fill: white; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .apropos-grid,.contact-layout,.loca-layout,.pal-grid,.pourquoi-layout { grid-template-columns: 1fr; gap: 50px; }
+  .services-grid,.temo-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .stat-card:nth-child(2) { border-right: none; }
+  .coll-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .coll-item:nth-child(1) { grid-row: auto; }
+  .coll-grid .coll-item { min-height: 240px; }
+  .nav-links,.nav-rdv { display: none; }
+  .burger { display: flex; }
+}
+@media (max-width: 640px) {
+  .services-grid,.temo-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .hero-h1 { font-size: 3rem; }
+  nav { padding: 0 5%; }
+  #hero,.stats-band,#apropos,#services,#collections,#palestine,#pourquoi,#temoignages,#localisation,#contact { padding-left: 5%; padding-right: 5%; }
+  #chat-box { width: calc(100vw - 40px); right: 20px; }
+  footer { flex-direction: column; text-align: center; }
+  .f-links { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+      <ellipse cx="16" cy="10" rx="6" ry="9" fill="#5C6B3A" opacity=".85"/>
+      <ellipse cx="10" cy="18" rx="5" ry="7" fill="#7A8F50" opacity=".6" transform="rotate(-20 10 18)"/>
+      <ellipse cx="22" cy="17" rx="5" ry="7" fill="#7A8F50" opacity=".6" transform="rotate(20 22 17)"/>
+      <line x1="16" y1="1" x2="16" y2="31" stroke="#3A4425" stroke-width="1.2" opacity=".5"/>
+      <circle cx="10" cy="22" r="2.5" fill="#B85C3C" opacity=".8"/>
+      <circle cx="22" cy="21" r="2.5" fill="#B85C3C" opacity=".8"/>
+      <circle cx="16" cy="25" r="2.5" fill="#B85C3C" opacity=".9"/>
+    </svg>
+    <span>Olive</span>
+    <span class="nav-logo-olive">🫒 L'olivier de Palestine</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#apropos">Histoire</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#localisation">Localisation</a></li>
+  </ul>
+  <a href="https://wa.me/32492680723?text=Bonjour%2C%20je%20viens%20du%20site%20web" class="nav-rdv" target="_blank">Prendre RDV</a>
+  <div class="burger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#apropos" onclick="closeMenu()">Histoire</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#collections" onclick="closeMenu()">Collections</a>
+  <a href="#palestine" onclick="closeMenu()">Notre âme</a>
+  <a href="#localisation" onclick="closeMenu()">Localisation</a>
+  <a href="#contact" onclick="closeMenu()" style="color:var(--terra)">Prendre RDV</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-bg" id="heroBg"></div>
+
+  <!-- Floating olive leaf SVG -->
+  <div class="hero-leaf">
+    <svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 10 C80 40 100 80 70 130 C60 150 50 160 60 170 C70 160 60 150 50 130 C20 80 40 40 60 10Z" fill="rgba(138,159,96,0.7)"/>
+      <line x1="60" y1="10" x2="60" y2="170" stroke="rgba(92,107,58,0.5)" stroke-width="1.5"/>
+      <path d="M60 50 C75 55 80 65 70 75" stroke="rgba(92,107,58,0.4)" stroke-width="1" fill="none"/>
+      <path d="M60 80 C45 85 40 95 50 105" stroke="rgba(92,107,58,0.4)" stroke-width="1" fill="none"/>
+      <path d="M60 110 C72 112 76 122 68 130" stroke="rgba(92,107,58,0.4)" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-pretitle">
+      <div class="hero-pretitle-line"></div>
+      Opticienne · Optométriste · Visagiste
+    </div>
+    <h1 class="hero-h1">Voir avec<br>les yeux de <em>l'âme</em></h1>
+    <p class="hero-sub">Au cœur de Bruxelles, Olive est née d'une promesse simple : prendre soin de votre regard avec la même patience que l'olivier de nos ancêtres — pour des siècles.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/32492680723?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous" class="btn-terra" target="_blank">
+        Prendre rendez-vous <span class="arr">→</span>
+      </a>
+      <a href="#collections" class="btn-outline">Découvrir les collections</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-bar"></div>
+    <span>Découvrir</span>
+  </div>
+</section>
+
+<!-- HERO SPLIT — oliviers Palestine + lunettes luxe -->
+<div style="display:grid;grid-template-columns:1fr 1fr;height:340px;position:relative;z-index:5">
+  <div style="position:relative;overflow:hidden">
+    <img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=900&auto=format&fit=crop&q=85"
+         alt="Oliviers de Palestine" loading="lazy"
+         style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.7) saturate(.85);transform:scale(1.04);transition:transform .8s ease">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,43,23,.8),rgba(92,107,58,.3));display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:2.5rem 2.8rem">
+      <span style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,242,232,.5);font-family:'Sora',sans-serif;margin-bottom:.6rem">Notre âme</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;font-style:italic;color:var(--cream);line-height:1.2">L'olivier<br>de Palestine</span>
+      <span style="font-size:.7rem;color:rgba(248,242,232,.4);margin-top:.5rem;font-family:'Sora',sans-serif;font-weight:200">زيتون فلسطين</span>
+    </div>
+  </div>
+  <div style="position:relative;overflow:hidden">
+    <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=900&auto=format&fit=crop&q=85"
+         alt="Lunettes de luxe Olive" loading="lazy"
+         style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.72) saturate(.9);transform:scale(1.04);transition:transform .8s ease">
+    <div style="position:absolute;inset:0;background:linear-gradient(225deg,rgba(184,92,60,.5),rgba(22,22,16,.75));display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;padding:2.5rem 2.8rem;text-align:right">
+      <span style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,242,232,.5);font-family:'Sora',sans-serif;margin-bottom:.6rem">Notre métier</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;font-style:italic;color:var(--cream);line-height:1.2">Lunettes<br>de caractère</span>
+      <span style="font-size:.7rem;color:rgba(248,242,232,.4);margin-top:.5rem;font-family:'Sora',sans-serif;font-weight:200">Rue du Midi 98 · Bruxelles</span>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-track">
+    <span class="mq-item"><span class="mq-dot"></span>Lunettes de vue</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>L'olivier de Palestine</span>
+    <span class="mq-item"><span class="mq-dot"></span>Examen de vue</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>Conseil visagiste</span>
+    <span class="mq-item"><span class="mq-dot"></span>Lentilles de contact</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>Rue du Midi 98 · Bruxelles</span>
+    <span class="mq-item"><span class="mq-dot"></span>Lunettes de soleil</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>Réparations express</span>
+    <!-- dup for infinite -->
+    <span class="mq-item"><span class="mq-dot"></span>Lunettes de vue</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>L'olivier de Palestine</span>
+    <span class="mq-item"><span class="mq-dot"></span>Examen de vue</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>Conseil visagiste</span>
+    <span class="mq-item"><span class="mq-dot"></span>Lentilles de contact</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>Rue du Midi 98 · Bruxelles</span>
+    <span class="mq-item"><span class="mq-dot"></span>Lunettes de soleil</span>
+    <span class="mq-item"><span class="mq-leaf">🫒</span>Réparations express</span>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<section id="video-section">
+  <div class="video-grid">
+    <div class="video-cell">
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay">
+        <div class="video-label">Notre savoir-faire</div>
+        <div class="video-title">L'art<br>du regard</div>
+      </div>
+    </div>
+    <div class="video-cell">
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/5702775/5702775-uhd_2560_1440_30fps.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay" style="align-items:flex-end;text-align:right">
+        <div class="video-label">Boutique</div>
+        <div class="video-title">Rue du Midi<br>Bruxelles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stats-grid">
+    <div class="stat-card rv">
+      <span class="stat-n"><span class="count" data-target="15">0</span><span class="stat-u">+</span></span>
+      <span class="stat-l">Années d'expérience</span>
+    </div>
+    <div class="stat-card rv d2">
+      <span class="stat-n"><span class="count" data-target="2000">0</span><span class="stat-u">+</span></span>
+      <span class="stat-l">Clients accompagnés</span>
+    </div>
+    <div class="stat-card rv d3">
+      <span class="stat-n">3<span class="stat-u">+</span></span>
+      <span class="stat-l">Spécialités uniques</span>
+    </div>
+    <div class="stat-card rv d4">
+      <span class="stat-n">100<span class="stat-u">%</span></span>
+      <span class="stat-l">Conseils personnalisés</span>
+    </div>
+  </div>
+</div>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--white)">
+  <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:70px">
+    <path d="M0,35 Q360,70 720,28 Q1080,-14 1440,42 L1440,70 L0,70Z" fill="#161610"/>
+  </svg>
+</div>
+
+<!-- À PROPOS -->
+<section id="apropos">
+  <div class="apropos-grid">
+    <div class="apropos-visuel rvl">
+      <div class="apropos-frame"></div>
+      <img class="apropos-img-main" src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=900&auto=format&fit=crop&q=85" alt="Olive opticienne Bruxelles">
+      <div class="apropos-badge">
+        <div class="apropos-badge-inner">
+          <span class="badge-n">15</span>
+          <span class="badge-l">ans · years</span>
+        </div>
+      </div>
+    </div>
+    <div class="apropos-text rvr d2">
+      <span class="olive-branch">🫒</span>
+      <span class="sec-label">Notre histoire</span>
+      <h2 class="sec-title">Une opticienne,<br>une âme, un nom.</h2>
+      <p><strong>Olive</strong> — ce nom n'est pas un hasard. C'est une déclaration d'identité. <em>L'olivier palestinien</em>, millénaire et indestructible, est le symbole de la terre, de la mémoire et de la beauté qui résiste.</p>
+
+      <div class="palestine-quote">
+        <p>« L'olivier ne donne ses meilleurs fruits qu'après des décennies de soin patient. C'est ainsi que je comprends l'optique — comme un art qui prend le temps qu'il faut. »</p>
+        <cite>— Mme K., opticienne-optométriste-visagiste</cite>
+      </div>
+
+      <p>Nichée au <strong>98 Rue du Midi</strong>, en plein cœur du Pentagone bruxellois, Mme K. a fondé Olive avec une conviction : que vos lunettes méritent autant d'attention qu'un bijou couture. Elle est à la fois <strong>optométriste</strong> — elle évalue votre vision avec la précision d'une scientifique — et <strong>visagiste</strong> — elle sait, d'un coup d'œil, quelle monture révèle votre visage.</p>
+      <p>Ancienne enseigne Comfort Optique, aujourd'hui rebaptisée <strong>Olive</strong> — pour que chaque client qui pousse la porte sache qu'ici, on porte quelque chose de plus grand que l'optique.</p>
+      <span class="signature">Mme K. — Olive</span>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,0 Q360,60 720,20 Q1080,-20 1440,40 L1440,60 L0,60Z" fill="#ffffff"/>
+  </svg>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header rv">
+    <div>
+      <span class="sec-label">Ce que nous proposons</span>
+      <h2 class="sec-title">Des services<br>sur mesure</h2>
+    </div>
+    <p class="services-sub">Chaque client est unique. Nous prenons le temps de comprendre votre vision, votre style, votre vie — avant de vous proposer quoi que ce soit.</p>
+  </div>
+
+  <!-- Bannière visuelle services -->
+  <div class="services-banner rv">
+    <img src="https://images.unsplash.com/photo-1577744486770-020ab432da65?w=1600&auto=format&fit=crop&q=85" alt="Lunettes de luxe Olive Bruxelles" loading="lazy">
+    <div class="services-banner-text">L'art de bien voir,<br>le soin du détail.</div>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc-card rv d1">
+      <span class="svc-icon">👁️</span>
+      <span class="svc-num">01</span>
+      <div class="svc-name">Examen de vue complet</div>
+      <p class="svc-desc">Bilan visuel professionnel par notre optométriste. Mesure précise, détection des troubles, adaptation de votre correction.</p>
+    </div>
+    <div class="svc-card rv d2">
+      <span class="svc-icon">👓</span>
+      <span class="svc-num">02</span>
+      <div class="svc-name">Montures & Verres premium</div>
+      <p class="svc-desc">Sélection de montures tendance et intemporelles. Verres haute qualité adaptés à votre correction et votre mode de vie.</p>
+    </div>
+    <div class="svc-card rv d3">
+      <span class="svc-icon">💧</span>
+      <span class="svc-num">03</span>
+      <div class="svc-name">Lentilles de contact</div>
+      <p class="svc-desc">Adaptation et suivi personnalisé — souples, rigides, journalières. Un confort visuel optimal dès le premier essai.</p>
+    </div>
+    <div class="svc-card rv d1">
+      <span class="svc-icon">✨</span>
+      <span class="svc-num">04</span>
+      <div class="svc-name">Conseil visagiste</div>
+      <p class="svc-desc">L'expertise rare de Mme K. : morphologie, teint, personnalité — elle trouve la monture qui vous ressemble vraiment.</p>
+    </div>
+    <div class="svc-card rv d2">
+      <span class="svc-icon">🔧</span>
+      <span class="svc-num">05</span>
+      <div class="svc-name">Réparations & Ajustements</div>
+      <p class="svc-desc">Branches, plaquettes, visserie — service rapide et soigné pour retrouver le confort de vos montures préférées.</p>
+    </div>
+    <div class="svc-card rv d3">
+      <span class="svc-icon">☀️</span>
+      <span class="svc-num">06</span>
+      <div class="svc-name">Lunettes de soleil</div>
+      <p class="svc-desc">Protection UV certifiée avec style. Des solaires qui conjuguent design contemporain et protection maximale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--dark)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,40 Q360,0 720,40 Q1080,80 1440,20 L1440,60 L0,60Z" fill="#F8F2E8"/>
+  </svg>
+</div>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="coll-header">
+    <div class="rv">
+      <span class="sec-label" style="color:var(--olive-light)">Nos collections</span>
+      <h2 class="sec-title sec-title-light">Des montures pour<br>chaque <em style="font-style:italic;color:var(--gold-light)">regard</em></h2>
+    </div>
+    <p class="coll-sub rv d3">Mme K. sélectionne chaque monture avec l'œil d'une visagiste — du minimaliste au bold, du classique au contemporain.</p>
+  </div>
+  <div class="coll-grid">
+    <div class="coll-item rv" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&auto=format&fit=crop&q=85" alt="Collection minimaliste" loading="lazy">
+      <div class="coll-overlay"><div class="coll-name">Minimaliste</div><div class="coll-type">Titane · Lignes épurées</div></div>
+    </div>
+    <div class="coll-item rv d1" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1573141597928-403fcee0194e?w=700&auto=format&fit=crop&q=85" alt="Collection vintage" loading="lazy">
+      <div class="coll-overlay"><div class="coll-name">Vintage</div><div class="coll-type">Acétate · Rétro moderne</div></div>
+    </div>
+    <div class="coll-item rv d2" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=700&auto=format&fit=crop&q=85" alt="Lunettes soleil" loading="lazy">
+      <div class="coll-overlay"><div class="coll-name">Solaires</div><div class="coll-type">UV400 · Style & protection</div></div>
+    </div>
+    <div class="coll-item rv d3" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1577744486770-020ab432da65?w=700&auto=format&fit=crop&q=85" alt="Collection contemporain" loading="lazy">
+      <div class="coll-overlay"><div class="coll-name">Contemporain</div><div class="coll-type">Design actuel · Premium</div></div>
+    </div>
+    <div class="coll-item rv d1" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=700&auto=format&fit=crop&q=85" alt="Montures femme" loading="lazy">
+      <div class="coll-overlay"><div class="coll-name">Féminines</div><div class="coll-type">Élégance · Caractère</div></div>
+    </div>
+    <div class="coll-item rv d2" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=700&auto=format&fit=crop&q=85" alt="Montures homme" loading="lazy">
+      <div class="coll-overlay"><div class="coll-name">Masculines</div><div class="coll-type">Caractère · Intemporel</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--olive-deep)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,0 Q360,60 720,25 Q1080,-10 1440,50 L1440,0 L0,0Z" fill="#161610"/>
+  </svg>
+</div>
+
+<!-- PALESTINE SECTION -->
+<section id="palestine">
+  <div class="pal-grid">
+    <div class="pal-text rv">
+      <span class="sec-label">L'âme d'Olive</span>
+      <h2 class="sec-title">L'olivier,<br>symbole d'éternité.</h2>
+      <p>Le nom <strong>Olive</strong> n'est pas anodin. En Palestine, l'olivier est bien plus qu'un arbre — c'est un témoin de civilisation, planté par des générations et transmis comme un héritage sacré.</p>
+      <p><strong>Certains oliviers de Terre Sainte ont 3 000 ans.</strong> Ils ont vu passer des empires, des conquêtes, des renaissances. Et ils continuent à porter leurs fruits, avec la même générosité discrète.</p>
+      <p>C'est cette permanence, cette beauté qui dure, cette patience du soin — que Mme K. a voulu incarner dans sa boutique. <em>Olive, c'est enraciné pour longtemps.</em></p>
+      <div class="pal-flags rv d3">
+        <div class="pal-flag-bar"></div>
+        <div class="pal-flag-bar"></div>
+        <div class="pal-flag-bar"></div>
+        <div class="pal-flag-bar"></div>
+      </div>
+    </div>
+    <div class="pal-visual rv d2">
+      <!-- Logo Olive SVG officiel + image oliviers -->
+      <div style="position:relative;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4)">
+        <img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=700&auto=format&fit=crop&q=85"
+             alt="Oliviers de Palestine"
+             style="width:100%;height:300px;object-fit:cover;display:block;filter:brightness(.6) saturate(.7)">
+        <!-- Logo Olive centré sur l'image -->
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem">
+          <svg width="72" height="72" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="drop-shadow:0 0 20px rgba(200,164,94,.6)">
+            <ellipse cx="16" cy="10" rx="6" ry="9" fill="#C8A45E" opacity=".9"/>
+            <ellipse cx="10" cy="18" rx="5" ry="7" fill="#DBBE88" opacity=".7" transform="rotate(-20 10 18)"/>
+            <ellipse cx="22" cy="17" rx="5" ry="7" fill="#DBBE88" opacity=".7" transform="rotate(20 22 17)"/>
+            <line x1="16" y1="1" x2="16" y2="31" stroke="#E8DAC4" stroke-width="1.5" opacity=".7"/>
+            <circle cx="10" cy="22" r="2.5" fill="#F8F2E8" opacity=".9"/>
+            <circle cx="22" cy="21" r="2.5" fill="#F8F2E8" opacity=".9"/>
+            <circle cx="16" cy="25" r="2.5" fill="#F8F2E8"/>
+          </svg>
+          <div style="text-align:center">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400;letter-spacing:.5em;text-transform:uppercase;color:var(--cream)">OLIVE</div>
+            <div style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,242,232,.5);font-family:'Sora',sans-serif;margin-top:.3rem">Opticienne · Bruxelles</div>
+          </div>
+        </div>
+      </div>
+      <p class="pal-caption">زيتون فلسطين — L'olivier de Palestine</p>
+      <div class="pal-olive-art" style="font-size:3.5rem">🫒</div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--cream-warm)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,60 C480,0 960,60 1440,25 L1440,0 L0,0Z" fill="#252B17"/>
+  </svg>
+</div>
+
+<!-- POURQUOI -->
+<section id="pourquoi">
+  <div class="pourquoi-layout">
+    <div class="pourquoi-left rvl">
+      <span class="sec-label">Nos engagements</span>
+      <h2 class="sec-title">Pourquoi choisir<br>Olive ?</h2>
+      <p style="margin-top:1.4rem">Parce que vous méritez une opticienne qui vous connaît, qui vous écoute et qui ne vous vend jamais ce dont vous n'avez pas besoin.</p>
+    </div>
+    <div class="pourquoi-items rvr">
+      <div class="pq-item d1">
+        <span class="pq-n">01</span>
+        <div>
+          <div class="pq-title">Double expertise rare : optométrie & visagisme</div>
+          <p class="pq-desc">Mme K. croise correction visuelle et harmonie du visage — deux disciplines que peu savent maîtriser ensemble à Bruxelles.</p>
+        </div>
+      </div>
+      <div class="pq-item d2">
+        <span class="pq-n">02</span>
+        <div>
+          <div class="pq-title">Conseils personnalisés, sans pression</div>
+          <p class="pq-desc">Ici, on prend le temps. Chaque consultation est unique, adaptée à votre morphologie, votre mode de vie, votre budget.</p>
+        </div>
+      </div>
+      <div class="pq-item d3">
+        <span class="pq-n">03</span>
+        <div>
+          <div class="pq-title">Rue du Midi — cœur de Bruxelles</div>
+          <p class="pq-desc">À deux pas du métro Anneessens (L2/L6), dans le quartier commerçant du Pentagone — accessible à tous.</p>
+        </div>
+      </div>
+      <div class="pq-item d4">
+        <span class="pq-n">04</span>
+        <div>
+          <div class="pq-title">Un suivi dans la durée</div>
+          <p class="pq-desc">Olive, c'est votre opticienne de confiance pour les années à venir — ajustements, réparations, évolution de votre vision.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Galerie -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:3rem;border-radius:16px;overflow:hidden" class="rv d3">
+    <div style="position:relative;overflow:hidden;height:200px;cursor:pointer" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=85" alt="Expertise optique" style="width:100%;height:100%;object-fit:cover;transition:transform 1s ease">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(37,43,23,.7));display:flex;align-items:flex-end;padding:1rem"><span style="color:var(--cream);font-size:.7rem;font-family:'Sora',sans-serif;letter-spacing:.1em">Expertise</span></div>
+    </div>
+    <div style="position:relative;overflow:hidden;height:200px;cursor:pointer" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=600&auto=format&fit=crop&q=85" alt="Précision" style="width:100%;height:100%;object-fit:cover;transition:transform 1s ease">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(37,43,23,.7));display:flex;align-items:flex-end;padding:1rem"><span style="color:var(--cream);font-size:.7rem;font-family:'Sora',sans-serif;letter-spacing:.1em">Précision</span></div>
+    </div>
+    <div style="position:relative;overflow:hidden;height:200px;cursor:pointer" onclick="openLightbox(this.querySelector('img'))">
+      <img src="https://images.unsplash.com/photo-1560785496-3c9d27877182?w=600&auto=format&fit=crop&q=85" alt="Bruxelles" style="width:100%;height:100%;object-fit:cover;transition:transform 1s ease">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(37,43,23,.7));display:flex;align-items:flex-end;padding:1rem"><span style="color:var(--cream);font-size:.7rem;font-family:'Sora',sans-serif;letter-spacing:.1em">Bruxelles</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--white)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,30 Q360,60 720,10 Q1080,-20 1440,40 L1440,60 L0,60Z" fill="#EDE4D6"/>
+  </svg>
+</div>
+
+<!-- TEMOIGNAGES -->
+<section id="temoignages">
+  <div class="temo-header rv">
+    <span class="sec-label">Ils témoignent</span>
+    <h2 class="sec-title">Ce que disent<br>nos clients</h2>
+  </div>
+  <div class="temo-grid">
+    <div class="temo-card rv d1">
+      <img class="temo-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" alt="Sarah M.">
+      <span class="stars">★★★★★</span>
+      <p class="temo-text">"Mme K. a un regard que peu d'opticiens ont. Elle m'a proposé une forme à laquelle je n'aurais jamais pensé — et maintenant tout le monde me complimente. Un talent rare."</p>
+      <span class="temo-author">— Sarah M., cliente depuis 4 ans</span>
+      <div class="temo-bar"></div>
+    </div>
+    <div class="temo-card rv d2">
+      <img class="temo-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="Thomas B.">
+      <span class="stars">★★★★★</span>
+      <p class="temo-text">"Enfin une opticienne qui prend vraiment le temps d'écouter. Mes lentilles sont parfaitement ajustées depuis le premier essai. Je ne vais nulle part ailleurs."</p>
+      <span class="temo-author">— Thomas B., client depuis 2 ans</span>
+      <div class="temo-bar"></div>
+    </div>
+    <div class="temo-card rv d3">
+      <img class="temo-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80" alt="Isabelle D.">
+      <span class="stars">★★★★★</span>
+      <p class="temo-text">"Boutique cosy, accueil chaleureux, expertise au rendez-vous. Mes lunettes progressives sont les premières que je porte sans migraine. Merci Mme K.!"</p>
+      <span class="temo-author">— Isabelle D., cliente depuis 1 an</span>
+      <div class="temo-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,20 Q360,60 720,15 Q1080,-30 1440,35 L1440,60 L0,60Z" fill="#FFFFFF"/>
+  </svg>
+</div>
+
+<!-- LUNETTES 3D -->
+<section id="glasses-3d">
+  <div class="rv" style="text-align:center;margin-bottom:2.5rem">
+    <span class="sec-label" style="color:var(--olive-light)">Notre signature</span>
+    <h2 class="sec-title sec-title-light">La monture<br>qui vous <em style="color:var(--gold-light);font-style:italic">ressemble</em></h2>
+  </div>
+  <div id="glasses-canvas-wrap" class="rv">
+    <canvas id="glasses-canvas"></canvas>
+  </div>
+  <p class="g3d-label">Olive — Collection Signature · Titane doré</p>
+  <div class="g3d-hint"><span class="g3d-arrow">↕</span><span>Faites défiler pour faire tourner</span></div>
+</section>
+
+<!-- LOCALISATION -->
+<section id="localisation">
+  <div class="rv">
+    <span class="sec-label">Nous trouver</span>
+    <h2 class="sec-title">Rue du Midi,<br>Bruxelles-Pentagone</h2>
+  </div>
+  <div class="loca-layout">
+    <div class="loca-infos rvl">
+      <div class="loca-item">
+        <div class="loca-icon">📍</div>
+        <div>
+          <div class="loca-lbl">Adresse</div>
+          <div class="loca-val">Rue du Midi 98<br>1000 Bruxelles (Pentagone)</div>
+        </div>
+      </div>
+      <div class="loca-item">
+        <div class="loca-icon">📞</div>
+        <div>
+          <div class="loca-lbl">Téléphone & WhatsApp</div>
+          <div class="loca-val"><a href="tel:+32492680723">+32 492 68 07 23</a></div>
+        </div>
+      </div>
+      <div class="loca-item">
+        <div class="loca-icon">✉️</div>
+        <div>
+          <div class="loca-lbl">Email</div>
+          <div class="loca-val"><a href="mailto:Olive.midi98@gmail.com">Olive.midi98@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="loca-item">
+        <div class="loca-icon">🕐</div>
+        <div>
+          <div class="loca-lbl">Horaires</div>
+          <div class="hours">
+            <span class="h-d">Lundi – Jeudi</span><span class="h-t">10h30 – 18h30</span>
+            <span class="h-d">Vendredi</span><span class="h-t">12h30 – 18h30</span>
+            <span class="h-d">Samedi</span><span class="h-t">10h30 – 18h30</span>
+            <span class="h-d">Dimanche</span><span class="h-t h-closed">Fermé</span>
+          </div>
+        </div>
+      </div>
+      <div class="loca-item">
+        <div class="loca-icon">🚇</div>
+        <div>
+          <div class="loca-lbl">Accès transports</div>
+          <div class="loca-val">Métro Anneessens (L2/L6)<br>Tram Midi · Bus Lemonnier</div>
+        </div>
+      </div>
+    </div>
+    <div class="map-3d rvr d2">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.5!2d4.3478!3d50.8436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c49ede6a9b07%3A0x1!2sRue+du+Midi+98%2C+1000+Bruxelles!5e0!3m2!1sfr!2sbe!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave" style="background:var(--dark)">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,40 C360,0 1080,60 1440,20 L1440,60 L0,60Z" fill="#F8F2E8"/>
+  </svg>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="rv">
+    <span class="sec-label" style="color:var(--olive-light)">Nous contacter</span>
+    <h2 class="sec-title sec-title-light">Prenons rendez-vous —<br>sans attendre.</h2>
+  </div>
+  <div class="contact-layout">
+    <form class="contact-form rvl d1" onsubmit="submitForm(event)">
+      <div class="f-group">
+        <label class="f-label">Votre nom</label>
+        <input type="text" class="f-input" placeholder="Marie Dupont" required>
+        <div class="f-line"></div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Email ou téléphone</label>
+        <input type="text" class="f-input" placeholder="marie@email.com ou +32 4xx xxx xxx" required>
+        <div class="f-line"></div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Service souhaité</label>
+        <input type="text" class="f-input" placeholder="Examen de vue, essai montures, lentilles...">
+        <div class="f-line"></div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Message (optionnel)</label>
+        <textarea class="f-input" placeholder="Précisez votre demande si nécessaire..."></textarea>
+        <div class="f-line"></div>
+      </div>
+      <button type="submit" class="btn-terra" style="align-self:flex-start;cursor:none">
+        Envoyer <span class="arr">→</span>
+      </button>
+    </form>
+    <div class="contact-right rvr d2">
+      <div class="c-item">
+        <span class="c-icon">📍</span>
+        <div>
+          <div class="c-lbl">Adresse</div>
+          <div class="c-val">Rue du Midi 98, 1000 Bruxelles</div>
+        </div>
+      </div>
+      <div class="c-item">
+        <span class="c-icon">✉️</span>
+        <div>
+          <div class="c-lbl">Email</div>
+          <div class="c-val"><a href="mailto:Olive.midi98@gmail.com">Olive.midi98@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="c-item">
+        <span class="c-icon">📞</span>
+        <div>
+          <div class="c-lbl">Téléphone</div>
+          <div class="c-val"><a href="tel:+32492680723">+32 492 68 07 23</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="c-lbl" style="font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(248,242,232,.3);margin-bottom:.7rem">Contact direct & instantané</div>
+        <a href="https://wa.me/32492680723?text=Bonjour%2C%20je%20viens%20du%20site%20web%20Olive" class="wa-cta" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Écrire sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-logo">Olive 🫒</div>
+    <div class="f-sub" style="margin-top:.5rem">Opticienne · Optométriste · Visagiste · Bruxelles</div>
+  </div>
+  <div class="f-links">
+    <a href="#apropos">Histoire</a>
+    <a href="#services">Services</a>
+    <a href="#collections">Collections</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div style="text-align:right">
+    <div class="f-sub">© 2026 Olive — Rue du Midi 98, Bruxelles</div>
+    <div class="f-sub" style="margin-top:.3rem;font-style:italic;opacity:.5">زيتون · L'olivier éternel</div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/32492680723?text=Bonjour%2C%20je%20viens%20du%20site%20web%20Olive" id="wa-float" target="_blank" title="WhatsApp Olive">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- WELCOME POPUP -->
+<div id="welcome-popup">
+  <div class="wp-card">
+    <span class="wp-olive">🫒</span>
+    <div class="wp-title">Bienvenue chez Olive</div>
+    <div class="wp-sub">Opticienne · Optométriste · Visagiste<br>Rue du Midi 98 · Bruxelles</div>
+    <button class="wp-btn" onclick="closeWelcome()">Découvrir la boutique →</button>
+    <div class="wp-skip" onclick="closeWelcome()">Passer</div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-caption"></div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"><div class="toast-dot"></div><span id="toast-msg">Mme K. est disponible aujourd'hui 👓</span></div>
+
+<!-- AI AGENT -->
+<div id="ai-agent">
+  <div id="ai-bubble">Besoin d'aide ? 💬</div>
+  <button id="chat-btn" onclick="toggleChat()">
+    <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
+      <circle cx="18" cy="18" r="7" stroke="white" stroke-width="1.8" fill="none"/>
+      <circle cx="18" cy="18" r="3" fill="white" opacity=".9"/>
+      <circle cx="8" cy="10" r="2.2" fill="white" opacity=".7"/>
+      <circle cx="28" cy="10" r="2.2" fill="white" opacity=".7"/>
+      <circle cx="8" cy="26" r="2.2" fill="white" opacity=".7"/>
+      <circle cx="28" cy="26" r="2.2" fill="white" opacity=".7"/>
+      <circle cx="18" cy="5" r="2" fill="white" opacity=".6"/>
+      <circle cx="18" cy="31" r="2" fill="white" opacity=".6"/>
+      <line x1="10" y1="11" x2="13" y2="14" stroke="white" stroke-width="1.2" opacity=".5"/>
+      <line x1="26" y1="11" x2="23" y2="14" stroke="white" stroke-width="1.2" opacity=".5"/>
+      <line x1="10" y1="25" x2="13" y2="22" stroke="white" stroke-width="1.2" opacity=".5"/>
+      <line x1="26" y1="25" x2="23" y2="22" stroke="white" stroke-width="1.2" opacity=".5"/>
+      <line x1="18" y1="7" x2="18" y2="11" stroke="white" stroke-width="1.2" opacity=".5"/>
+      <line x1="18" y1="25" x2="18" y2="29" stroke="white" stroke-width="1.2" opacity=".5"/>
+      <ellipse cx="18" cy="18" rx="14" ry="6" stroke="white" stroke-width=".8" opacity=".25" transform="rotate(-30 18 18)"/>
+    </svg>
+  </button>
+</div>
+
+<div id="chat-tip" onclick="toggleChat()">Une question sur nos montures ? 👓</div>
+<button id="chat-btn" onclick="toggleChat()">👓</button>
+
+<div id="chat-box">
+  <div class="ch-head">
+    <div class="ch-av">🫒</div>
+    <div class="ch-info">
+      <div class="ch-name">Olive — Assistante</div>
+      <div class="ch-status"><div class="ch-dot"></div>En ligne</div>
+    </div>
+    <button class="ch-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="ch-msgs" id="chMsgs">
+    <div class="msg msg-bot">Bonjour ! Je suis l'assistante d'Olive. Comment puis-je vous aider aujourd'hui ? 🫒</div>
+  </div>
+  <div class="ch-sugs" id="chSugs">
+    <button class="sug" onclick="sendSug(this.textContent)">Prendre RDV</button>
+    <button class="sug" onclick="sendSug(this.textContent)">Horaires</button>
+    <button class="sug" onclick="sendSug(this.textContent)">Collections</button>
+    <button class="sug" onclick="sendSug(this.textContent)">Nous trouver</button>
+  </div>
+  <div class="ch-inp">
+    <input type="text" id="ci" placeholder="Votre question..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button id="cs" onclick="sendMsg()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// ── WELCOME POPUP ──
+function closeWelcome(){
+  const p=document.getElementById('welcome-popup');
+  p.classList.add('hide');
+  snd(523,.06,.4); setTimeout(()=>snd(659,.04,.35),80);
+  setTimeout(()=>p.remove(),600);
+}
+window.addEventListener('load',()=>setTimeout(()=>snd(440,.04,.6),300));
+
+// ── LIGHTBOX ──
+function openLightbox(img){
+  const lb=document.getElementById('lightbox');
+  document.getElementById('lb-img').src=img.src.replace(/w=\d+/,'w=1400');
+  document.getElementById('lb-caption').textContent=img.alt;
+  lb.classList.add('open'); snd(660,.04,.3);
+}
+function closeLightbox(e){
+  if(e&&e.target.id!=='lightbox'&&e.target.id!=='lb-close')return;
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+// ── TOAST ──
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show'); snd(880,.025,.2);
+  setTimeout(()=>t.classList.remove('show'),4200);
+}
+const TOASTS=['Mme K. disponible cette semaine 👓','Rue du Midi 98 · Métro Anneessens 📍','Conseil visagiste gratuit à chaque visite ✨','Collection été — nouvelle arrivée 🫒'];
+let ti=0;
+setTimeout(()=>showToast(TOASTS[ti++]),9000);
+setInterval(()=>{if(ti<TOASTS.length)showToast(TOASTS[ti++]);},24000);
+
+// ── FLOAT PARTICLES ──
+(function(){
+  const em=['🫒','🌿','✨','👓','🌱'];
+  function spawn(){
+    const el=document.createElement('div'); el.className='float-particle';
+    el.textContent=em[Math.floor(Math.random()*em.length)];
+    el.style.left=Math.random()*100+'vw';
+    el.style.animationDuration=(6+Math.random()*8)+'s';
+    el.style.animationDelay=(Math.random()*3)+'s';
+    el.style.fontSize=(.65+Math.random()*.85)+'rem';
+    el.style.bottom='-30px';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),14000);
+  }
+  setInterval(spawn,3200);
+})();
+
+// ── CURSOR ──
+const cdot=document.getElementById('cur-dot'),cring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cdot.style.left=mx+'px';cdot.style.top=my+'px';});
+(function ac(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cring.style.left=rx+'px';cring.style.top=ry+'px';requestAnimationFrame(ac);})();
+document.querySelectorAll('a,button,.svc-card,.coll-item,.temo-card,.pq-item,.stat-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('c-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('c-hover'));
+});
+document.querySelectorAll('input,textarea').forEach(el=>{
+  el.addEventListener('focus',()=>document.body.classList.add('c-text'));
+  el.addEventListener('blur',()=>document.body.classList.remove('c-text'));
+});
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>50);
+  const bg=document.getElementById('heroBg');
+  if(bg&&scrollY<window.innerHeight)bg.style.transform=`scale(1.08) translateY(${scrollY*.2}px)`;
+},{passive:true});
+
+// ── MOBILE MENU ──
+function toggleMenu(){ document.getElementById('burger').classList.toggle('open'); document.getElementById('mobMenu').classList.toggle('open'); }
+function closeMenu(){ document.getElementById('burger').classList.remove('open'); document.getElementById('mobMenu').classList.remove('open'); }
+
+// ── HERO CANVAS ──
+(function(){
+  const c=document.getElementById('hero-canvas'),ctx=c.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
+  resize(); window.addEventListener('resize',resize,{passive:true});
+  class P{
+    reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*.7+.15;this.vx=(Math.random()-.5)*.2;this.vy=-Math.random()*.35-.1;this.a=Math.random()*.5+.1;this.life=Math.random()*220+80;this.age=0;}
+    constructor(){this.reset();}
+    tick(){this.x+=this.vx;this.y+=this.vy;this.age++;if(this.age>this.life||this.y<-5)this.reset();}
+    draw(){const f=this.age<40?this.age/40:this.age>this.life-40?(this.life-this.age)/40:1;ctx.globalAlpha=this.a*f;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='#B8D080';ctx.fill();}
+  }
+  for(let i=0;i<90;i++)pts.push(new P());
+  (function loop(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.tick();p.draw();});ctx.globalAlpha=1;requestAnimationFrame(loop);})();
+})();
+
+// ── 3D TILT cards ──
+document.querySelectorAll('.svc-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-14px) rotateX(${-y*10}deg) rotateY(${x*8}deg)`;});
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+document.querySelectorAll('.temo-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-12px) rotateX(${-y*8}deg) rotateY(${x*6}deg)`;});
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+const apImg=document.querySelector('.apropos-img-main');
+if(apImg){const apW=apImg.closest('.apropos-visuel');apW.addEventListener('mousemove',e=>{const r=apImg.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;apImg.style.transform=`scale(1.03) rotateY(${x*14}deg) rotateX(${-y*10}deg)`;});apW.addEventListener('mouseleave',()=>apImg.style.transform='');}
+
+// ── REVEAL ──
+const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.1});
+document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>rvObs.observe(el));
+
+// ── COUNTERS ──
+const cntObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,tgt=+el.dataset.target;let v=0,step=tgt/65;const t=setInterval(()=>{v=Math.min(v+step,tgt);el.textContent=Math.floor(v).toLocaleString('fr');if(v>=tgt)clearInterval(t);},20);cntObs.unobserve(el);});},{threshold:.5});
+document.querySelectorAll('.count').forEach(el=>cntObs.observe(el));
+
+// ── CHATBOT ──
+let chatOpen=false;
+const aiBubble=document.getElementById('ai-bubble');
+setTimeout(()=>{if(!chatOpen)aiBubble.classList.add('show');},4500);
+setTimeout(()=>aiBubble.classList.remove('show'),13000);
+
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chat-box').classList.toggle('open',chatOpen);
+  aiBubble.classList.remove('show');
+  if(chatOpen){snd(523,.07,.3);setTimeout(()=>snd(659,.05,.3),80);setTimeout(()=>snd(784,.04,.4),160);}
+  else{snd(330,.06,.25);}
+}
+
+function snd(freq,vol,dur){
+  try{const ac=new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.setValueAtTime(freq,ac.currentTime);g.gain.setValueAtTime(vol,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+dur);o.type='sine';o.start();o.stop(ac.currentTime+dur+.05);}catch(e){}
+}
+
+const FLOWS={
+  initial:['Prendre RDV','Horaires','Collections','Nous trouver'],
+  rdv:['Lundi matin','Cette semaine','Via WhatsApp','Modifier RDV'],
+  services:['Examen de vue','Lentilles','Conseil visagiste','Réparations'],
+  location:['Quelle station ?','Parking proche ?','Prendre RDV','Horaires'],
+};
+function detectState(m){m=m.toLowerCase();if(m.includes('rdv')||m.includes('rendez'))return'rdv';if(m.includes('service')||m.includes('examen')||m.includes('lentille'))return'services';if(m.includes('adresse')||m.includes('où')||m.includes('métro'))return'location';return'initial';}
+function updateSugs(state){const el=document.getElementById('chSugs');el.innerHTML=(FLOWS[state]||FLOWS.initial).map(s=>`<button class="sug" onclick="sendSug(this.textContent)">${s}</button>`).join('');}
+function addMsg(txt,role){const c=document.getElementById('chMsgs');const d=document.createElement('div');d.className=`msg msg-${role}`;d.textContent=txt;c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function showTyping(){const c=document.getElementById('chMsgs');const d=document.createElement('div');d.className='typing';d.id='typing';d.innerHTML='<div class="t"></div><div class="t"></div><div class="t"></div>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function hideTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+
+const CTX=`Tu es l'assistante IA d'Olive, opticienne-optométriste-visagiste au 98 Rue du Midi, 1000 Bruxelles.
+Fondatrice: Mme K. Horaires: Lu-Je 10h30-18h30 | Ve 12h30-18h30 | Sa 10h30-18h30 | Di fermé.
+Services: examens de vue, montures, lentilles, conseil visagiste, réparations, solaires.
+Contact: +32 492 68 07 23 | wa.me/32492680723 | Olive.midi98@gmail.com
+Le nom Olive est un hommage à l'olivier palestinien — symbole de racines et de beauté.
+Réponds en français, ton chaleureux, max 2 phrases, 1 emoji (👓✨📍🕐🫒💬).`;
+
+async function getAI(msg){
+  try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':'CLAUDE_API_KEY','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:150,system:CTX,messages:[{role:'user',content:msg}]})});if(!r.ok)throw new Error();return(await r.json()).content[0].text;}
+  catch{const m=msg.toLowerCase();if(m.includes('heure')||m.includes('horaire'))return'Nous sommes ouverts Lu-Je 10h30-18h30, Ve dès 12h30 et Sa 10h30-18h30. 🕐';if(m.includes('rdv')||m.includes('rendez'))return'Contactez-nous via WhatsApp au +32 492 68 07 23 ! 🫒';if(m.includes('adresse')||m.includes('où'))return'Rue du Midi 98, 1000 Bruxelles — métro Anneessens L2/L6. 📍';if(m.includes('lentille'))return'Adaptation et suivi personnalisé pour toutes les lentilles. 👓';if(m.includes('collection')||m.includes('monture'))return'Mme K. vous guidera vers la monture qui vous ressemble ! ✨';return'WhatsApp au +32 492 68 07 23 — nous sommes là pour vous ! 👓';}
+}
+
+async function sendMsg(){const input=document.getElementById('ci');const msg=input.value.trim();if(!msg)return;input.value='';addMsg(msg,'usr');snd(523,.05,.18);updateSugs(detectState(msg));showTyping();const res=await getAI(msg);hideTyping();addMsg(res,'bot');}
+function sendSug(t){document.getElementById('ci').value=t;sendMsg();}
+
+// ── FORM ──
+function submitForm(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');btn.innerHTML='Envoyé ✓';btn.style.background='var(--olive-dark)';btn.disabled=true;}
+
+// ── LUNETTES 3D ──
+(function(){
+  const s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  s.onload=function(){
+    const canvas=document.getElementById('glasses-canvas');
+    if(!canvas)return;
+    const wrap=document.getElementById('glasses-canvas-wrap');
+    const W=wrap.offsetWidth||680,H=wrap.offsetHeight||400;
+    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    renderer.setSize(W,H);
+    const scene=new THREE.Scene();
+    const camera=new THREE.PerspectiveCamera(42,W/H,.1,100);
+    camera.position.set(0,0,5.5);
+    scene.add(new THREE.AmbientLight(0xf8f2e8,.7));
+    const kl=new THREE.DirectionalLight(0xffffff,1.3);kl.position.set(3,4,3);scene.add(kl);
+    const fl=new THREE.DirectionalLight(0xc8a45e,.6);fl.position.set(-3,0,2);scene.add(fl);
+    const rl=new THREE.DirectionalLight(0x7a8f50,.4);rl.position.set(0,-2,-3);scene.add(rl);
+    const mF=new THREE.MeshStandardMaterial({color:0xC8A45E,metalness:.92,roughness:.12});
+    const mL=new THREE.MeshPhysicalMaterial({color:0x2a3420,transmission:.75,transparent:true,opacity:.6,roughness:.04,metalness:.05,ior:1.5,thickness:.3});
+    const mN=new THREE.MeshStandardMaterial({color:0x111108,roughness:.5});
+    const G=new THREE.Group();
+    const RW=.72,RH=.5;
+    function rim(x){
+      const sh=new THREE.Shape();sh.absellipse(0,0,RW,RH,0,Math.PI*2);
+      const h=new THREE.Path();h.absellipse(0,0,RW-.055,RH-.055,0,Math.PI*2,true);sh.holes.push(h);
+      const geo=new THREE.ExtrudeGeometry(sh,{depth:.055,bevelEnabled:true,bevelSize:.012,bevelThickness:.008,bevelSegments:3});
+      const m=new THREE.Mesh(geo,mF);m.position.x=x;return m;
+    }
+    function lens(x){
+      const pts=new THREE.EllipseCurve(0,0,RW-.07,RH-.07,0,Math.PI*2).getPoints(64);
+      const m=new THREE.Mesh(new THREE.ShapeGeometry(new THREE.Shape(pts)),mL);m.position.set(x,0,.025);return m;
+    }
+    G.add(rim(-0.88));G.add(rim(0.88));G.add(lens(-0.88));G.add(lens(0.88));
+    const br=new THREE.Mesh(new THREE.CylinderGeometry(.022,.022,.26,10),mF);br.rotation.z=Math.PI/2;br.position.set(0,.06,0);G.add(br);
+    function temple(s){
+      const cv=new THREE.CatmullRomCurve3([new THREE.Vector3(s*(RW+.88),0,0),new THREE.Vector3(s*(RW+1.35),0,-.3),new THREE.Vector3(s*(RW+1.9),-.14,-.9),new THREE.Vector3(s*(RW+1.95),-.48,-1.0)]);
+      G.add(new THREE.Mesh(new THREE.TubeGeometry(cv,20,.02,8),mF));
+    }
+    temple(-1);temple(1);
+    [-.17,.17].forEach(sx=>{const p=new THREE.Mesh(new THREE.BoxGeometry(.035,.07,.025),mN);p.position.set(sx,-.33,.04);p.rotation.z=sx>0?.3:-.3;G.add(p);});
+    G.rotation.x=.15;
+    scene.add(G);
+    let tY=0,cY=0,tX=.15,cX=.15,auto=0;
+    const sec=document.getElementById('glasses-3d');
+    window.addEventListener('scroll',()=>{
+      const r=sec.getBoundingClientRect(),vh=window.innerHeight;
+      if(r.top<vh&&r.bottom>0){const p=(vh-r.top)/(vh+r.height);tY=p*Math.PI*2.8-.4;tX=.15+Math.sin(p*Math.PI)*.18;}
+    },{passive:true});
+    canvas.addEventListener('mousemove',e=>{
+      const r=canvas.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width*2-1,y=(e.clientY-r.top)/r.height*2-1;
+      tX=.15-y*.22;tY+=x*.05;
+    });
+    (function loop(){
+      requestAnimationFrame(loop);auto+=.006;
+      cY+=(tY-cY)*.055;cX+=(tX-cX)*.055;
+      G.rotation.y=cY+auto;G.rotation.x=cX;
+      renderer.render(scene,camera);
+    })();
+    window.addEventListener('resize',()=>{const nw=wrap.offsetWidth,nh=wrap.offsetHeight;camera.aspect=nw/nh;camera.updateProjectionMatrix();renderer.setSize(nw,nh);});
+  };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
