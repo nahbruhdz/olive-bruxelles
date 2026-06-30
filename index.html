@@ -887,21 +887,89 @@ footer {
 }
 
 @media(max-width:768px){
-  /* Kador 3D responsive */
-  #kador-canvas-wrap{width:100%!important;height:280px!important;border-radius:20px!important;}
-  /* Flex column sur mobile */
-  .apropos-visuel > div[style*="display:flex"]{flex-direction:column!important;align-items:center!important;gap:1.5rem!important;}
-  /* Boutons flottants mobile */
+  /* ── GLOBAL ── */
+  *{-webkit-tap-highlight-color:transparent;}
+  body{font-size:15px;}
+
+  /* ── NAV ── */
+  nav{padding:0 4%!important;}
+  .nav-logo span{font-size:1.1rem!important;}
+
+  /* ── HERO ── */
+  #hero{min-height:90vh!important;padding:0 5%!important;}
+  .hero-h1{font-size:2.4rem!important;line-height:1.15!important;}
+  .hero-sub{font-size:.8rem!important;}
+  .hero-btns{flex-direction:column!important;gap:.8rem!important;align-items:flex-start!important;}
+
+  /* ── STATS ── */
+  .stats-grid{grid-template-columns:1fr 1fr!important;}
+  .stat-card{padding:1.2rem!important;}
+  .stat-n{font-size:2rem!important;}
+
+  /* ── KADOR 3D ── */
+  #kador-canvas-wrap{width:100%!important;height:260px!important;border-radius:18px!important;}
+  .apropos-grid{grid-template-columns:1fr!important;gap:1.5rem!important;}
+  .apropos-visuel{align-items:center!important;}
+  .apropos-badge{display:none!important;}
+
+  /* ── SECTIONS TEXTE ── */
+  .sec-title{font-size:1.8rem!important;line-height:1.2!important;}
+  #apropos,#services,#collections,#palestine,#pourquoi,#temoignages,#localisation,#contact{
+    padding:3rem 5%!important;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid{grid-template-columns:1fr!important;}
+  .services-banner{height:200px!important;}
+  .svc-card{padding:1.5rem!important;}
+
+  /* ── COLLECTIONS ── */
+  .coll-grid{grid-template-columns:1fr 1fr!important;}
+  .coll-item{min-height:160px!important;}
+
+  /* ── PALESTINE ── */
+  .pal-grid{grid-template-columns:1fr!important;}
+
+  /* ── TEMOIGNAGES ── */
+  .temo-grid{grid-template-columns:1fr!important;}
+
+  /* ── VIDEO ── */
+  .video-grid{grid-template-columns:1fr!important;height:auto!important;}
+  .video-cell{height:220px!important;}
+
+  /* ── LOCALISATION ── */
+  .loca-layout{grid-template-columns:1fr!important;}
+  .map-3d{height:220px!important;}
+
+  /* ── CONTACT ── */
+  .contact-layout{grid-template-columns:1fr!important;}
+
+  /* ── FOOTER ── */
+  footer{flex-direction:column!important;text-align:center!important;gap:1rem!important;padding:2rem 5%!important;}
+  .f-links{justify-content:center!important;flex-wrap:wrap!important;}
+
+  /* ── BOUTONS FLOTTANTS ── */
   #ai-agent{bottom:16px!important;right:14px!important;}
-  #ai-agent #ai-bubble{font-size:.6rem!important;padding:7px 12px!important;}
-  #ai-agent #chat-btn{width:52px!important;height:52px!important;}
-  #wa-float{bottom:16px!important;right:86px!important;width:52px!important;height:52px!important;}
-  /* Chat box mobile */
-  #chat-box{width:92vw!important;right:4vw!important;bottom:80px!important;}
-  /* Apropos grid */
-  .apropos-grid{grid-template-columns:1fr!important;gap:2rem!important;}
-  /* Texte Kador */
-  .apropos-visuel > div > div[style*="flex:1"]{padding:0!important;text-align:center!important;}
+  #chat-btn{width:52px!important;height:52px!important;}
+  #wa-float{bottom:16px!important;right:80px!important;width:52px!important;height:52px!important;}
+
+  /* ── CHAT BOX ── */
+  #chat-box{width:92vw!important;right:4vw!important;bottom:76px!important;max-height:65vh!important;}
+
+  /* ── CURSEUR CUSTOM — désactivé mobile ── */
+  #cur-dot,#cur-ring{display:none!important;}
+
+  /* ── TICKER ── */
+  .ticker-wrap{font-size:.7rem!important;}
+
+  /* ── POPUP WELCOME ── */
+  .wp-card{width:92vw!important;padding:2rem 1.4rem!important;}
+}
+
+@media(max-width:400px){
+  .hero-h1{font-size:2rem!important;}
+  .sec-title{font-size:1.5rem!important;}
+  .coll-grid{grid-template-columns:1fr!important;}
 }
 </style>
 </head>
