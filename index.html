@@ -773,7 +773,7 @@ footer {
 
 /* ── WA FLOAT ── */
 #wa-float {
-  position: fixed; bottom: 104px; right: 28px; z-index: 900;
+  position: fixed; bottom: 170px; right: 24px; z-index: 900;
   width: 56px; height: 56px; border-radius: 50%;
   background: #25D366; display: flex; align-items: center; justify-content: center;
   text-decoration: none;
@@ -884,6 +884,24 @@ footer {
   #chat-box { width: calc(100vw - 40px); right: 20px; }
   footer { flex-direction: column; text-align: center; }
   .f-links { justify-content: center; }
+}
+
+@media(max-width:768px){
+  /* Kador 3D responsive */
+  #kador-canvas-wrap{width:100%!important;height:280px!important;border-radius:20px!important;}
+  /* Flex column sur mobile */
+  .apropos-visuel > div[style*="display:flex"]{flex-direction:column!important;align-items:center!important;gap:1.5rem!important;}
+  /* Boutons flottants mobile */
+  #ai-agent{bottom:16px!important;right:14px!important;}
+  #ai-agent #ai-bubble{font-size:.6rem!important;padding:7px 12px!important;}
+  #ai-agent #chat-btn{width:52px!important;height:52px!important;}
+  #wa-float{bottom:160px!important;right:14px!important;width:52px!important;height:52px!important;}
+  /* Chat box mobile */
+  #chat-box{width:92vw!important;right:4vw!important;bottom:80px!important;}
+  /* Apropos grid */
+  .apropos-grid{grid-template-columns:1fr!important;gap:2rem!important;}
+  /* Texte Kador */
+  .apropos-visuel > div > div[style*="flex:1"]{padding:0!important;text-align:center!important;}
 }
 </style>
 </head>
@@ -1079,12 +1097,12 @@ footer {
   <div class="apropos-grid">
     <div class="apropos-visuel rvl" style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
       <div style="display:flex;align-items:center;gap:3rem;width:100%;max-width:680px;">
-        <div id="kador-canvas-wrap" style="width:480px;height:380px;flex-shrink:0;position:relative;border-radius:0;overflow:visible;background:transparent;box-shadow:none;">
+        <div id="kador-canvas-wrap" style="width:420px;height:420px;flex-shrink:0;position:relative;border-radius:28px;overflow:hidden;background:radial-gradient(ellipse at 40% 35%,#f7f0e6 0%,#ede0cc 55%,#d9c9b0 100%);box-shadow:0 28px 70px rgba(22,22,16,.15),inset 0 1px 0 rgba(255,255,255,.6);">
           <canvas id="kador-canvas" style="width:100%;height:100%;display:block;"></canvas>
           <div id="kador-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <div style="width:40px;height:40px;border:2.5px solid rgba(92,107,58,.2);border-top-color:#5C6B3A;border-radius:50%;animation:spin .8s linear infinite;"></div>
+            <div style="width:36px;height:36px;border:2px solid rgba(92,107,58,.2);border-top-color:#5C6B3A;border-radius:50%;animation:spin .8s linear infinite;"></div>
           </div>
-          </div>
+        </div>
         <div style="flex:1;text-align:left;padding:2rem 0;">
           <div style="font-size:.5rem;letter-spacing:.38em;text-transform:uppercase;color:rgba(92,107,58,.6);font-family:'Sora',sans-serif;margin-bottom:.5rem;">Collection</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:#1a1a10;letter-spacing:.08em;line-height:1.1;margin-bottom:.8rem;">Kador<br>Glamour</div>
@@ -1793,20 +1811,20 @@ function submitForm(e){e.preventDefault();const btn=e.target.querySelector('butt
       const canvas=document.getElementById('kador-canvas');
       if(!canvas)return;
       const wrap=document.getElementById('kador-canvas-wrap');
-      const S=500;
+      const S=420;
       const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
       renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-      renderer.setSize(S,S);renderer.setPixelRatio(window.devicePixelRatio||2);
+      renderer.setSize(S,S);
       renderer.outputEncoding=THREE.sRGBEncoding;
       renderer.toneMapping=THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure=2.0;
+      renderer.toneMappingExposure=1.8;
       const scene=new THREE.Scene();
-      const camera=new THREE.PerspectiveCamera(30,1,.01,100);
-      camera.position.set(0,.01,.22);
-      scene.add(new THREE.AmbientLight(0xfff8f0,1.0));
-      const k=new THREE.DirectionalLight(0xffffff,3.0);k.position.set(2,4,3);scene.add(k);
-      const f=new THREE.DirectionalLight(0xd4e8ff,1.5);f.position.set(-3,1,2);scene.add(f);
-      const b=new THREE.PointLight(0xfff0d4,.8,8);b.position.set(0,2,2);scene.add(b);
+      const camera=new THREE.PerspectiveCamera(22,1,.01,100);
+      camera.position.set(0,0,.38);
+      scene.add(new THREE.AmbientLight(0xfff8f0,1.4));
+      const k=new THREE.DirectionalLight(0xffffff,2.8);k.position.set(3,5,4);scene.add(k);
+      const f=new THREE.DirectionalLight(0xd4e8ff,1.2);f.position.set(-3,0,3);scene.add(f);
+      const b=new THREE.PointLight(0xfff0d4,.6,10);b.position.set(0,3,3);scene.add(b);
       const loader=new THREE.GLTFLoader();
       loader.load('https://raw.githubusercontent.com/mahdichouchen/glasses-3d-models/main/bold_red_square.glb',
         function(gltf){
@@ -1814,38 +1832,46 @@ function submitForm(e){e.preventDefault();const btn=e.target.querySelector('butt
           const box=new THREE.Box3().setFromObject(model);
           const center=box.getCenter(new THREE.Vector3());
           const size=box.getSize(new THREE.Vector3());
-          const scale=.28/Math.max(size.x,size.y,size.z);
+          // Remplir ~65% du canvas horizontalement
+          const maxDim=Math.max(size.x,size.y,size.z);
+          const fovRad=22*Math.PI/180;
+          const dist=camera.position.z;
+          const visibleW=2*dist*Math.tan(fovRad/2);
+          const scale=(visibleW*.65)/maxDim;
           model.scale.setScalar(scale);
-          model.position.sub(center.multiplyScalar(scale));
+          model.position.copy(center.clone().negate().multiplyScalar(scale));
+          model.position.y -= size.y*scale*.08; // légèrement centré
           model.traverse(function(c){
             if(c.isMesh&&c.material){
               const mats=Array.isArray(c.material)?c.material:[c.material];
               mats.forEach(function(m){
-                m.color&&m.color.setHex(0x0d0d14);
-                m.metalness=.15;m.roughness=.04;m.envMapIntensity=2;
+                m.color&&m.color.setHex(0x111118);
+                m.metalness=.2;m.roughness=.06;
               });
             }
           });
           scene.add(model);
           const loading=document.getElementById('kador-loading');
           if(loading)loading.style.display='none';
-          let rx=-.08,ry=0;
+          let rx=-.05,ry=0,mx=0,my=0;
           canvas.addEventListener('mousemove',function(e){
             const r=canvas.getBoundingClientRect();
-            rx=-.08-(e.clientY-r.top)/r.height*.2+.1;
+            mx=(e.clientX-r.left)/r.width-.5;
+            my=(e.clientY-r.top)/r.height-.5;
           });
           (function loop(){
             requestAnimationFrame(loop);
-            ry+=.008;
-            model.rotation.y=ry;
+            ry+=.007;
+            rx+=(my*-.25-rx)*.04;
+            model.rotation.y=ry+mx*.3;
             model.rotation.x+=(rx-model.rotation.x)*.04;
             renderer.render(scene,camera);
           })();
         },
         undefined,
-        function(){
+        function(err){
           const loading=document.getElementById('kador-loading');
-          if(loading)loading.innerHTML='<img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&auto=format&fit=crop&q=95" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+          if(loading)loading.innerHTML='<img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&auto=format&fit=crop&q=95" style="width:100%;height:100%;object-fit:cover;border-radius:28px;">';
         }
       );
     });
