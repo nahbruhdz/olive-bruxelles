@@ -1012,24 +1012,21 @@ footer {
 <!-- VIDEO SECTION -->
 <section id="video-section">
   <div class="video-grid">
-    <div class="video-cell">
-      <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/4226122/4226122-hd_1920_1080_25fps.mp4" type="video/mp4">
-        <source src="https://videos.pexels.com/video-files/5726456/5726456-hd_1920_1080_25fps.mp4" type="video/mp4">
+    <div class="video-cell" style="position:relative;overflow:hidden;">
+      <video autoplay muted loop playsinline crossorigin="anonymous" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.5) saturate(.7);">
+        <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38aaa27f46e5acd55&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
       </video>
+      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=1200&auto=format&fit=crop&q=90" alt="Opticienne examen de vue" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.8);">
       <div class="video-overlay">
         <div class="video-label">Notre savoir-faire</div>
         <div class="video-title">L'art<br>du regard</div>
       </div>
     </div>
-    <div class="video-cell">
-      <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/5792904/5792904-hd_1920_1080_25fps.mp4" type="video/mp4">
-        <source src="https://videos.pexels.com/video-files/7578542/7578542-hd_1920_1080_25fps.mp4" type="video/mp4">
-      </video>
+    <div class="video-cell" style="position:relative;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=90" alt="Precision optique" style="width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.8);">
       <div class="video-overlay" style="align-items:flex-end;text-align:right">
         <div class="video-label">Expertise optique</div>
-        <div class="video-title">Précision<br>& soin</div>
+        <div class="video-title">Précision<br>&amp; soin</div>
       </div>
     </div>
   </div>
@@ -1557,25 +1554,12 @@ footer {
 <div id="toast"><div class="toast-dot"></div><span id="toast-msg">Mme K. est disponible aujourd'hui 👓</span></div>
 
 <!-- AI AGENT -->
-<div id="ai-agent">
-  <div id="ai-bubble" onclick="toggleChat()" style="cursor:pointer">Besoin d'aide ? 💬</div>
-  <button id="chat-btn" onclick="toggleChat()">
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-      <circle cx="18" cy="18" r="7" stroke="white" stroke-width="1.8" fill="none"/>
-      <circle cx="18" cy="18" r="3" fill="white" opacity=".9"/>
-      <circle cx="8" cy="10" r="2.2" fill="white" opacity=".7"/>
-      <circle cx="28" cy="10" r="2.2" fill="white" opacity=".7"/>
-      <circle cx="8" cy="26" r="2.2" fill="white" opacity=".7"/>
-      <circle cx="28" cy="26" r="2.2" fill="white" opacity=".7"/>
-      <circle cx="18" cy="5" r="2" fill="white" opacity=".6"/>
-      <circle cx="18" cy="31" r="2" fill="white" opacity=".6"/>
-      <line x1="10" y1="11" x2="13" y2="14" stroke="white" stroke-width="1.2" opacity=".5"/>
-      <line x1="26" y1="11" x2="23" y2="14" stroke="white" stroke-width="1.2" opacity=".5"/>
-      <line x1="10" y1="25" x2="13" y2="22" stroke="white" stroke-width="1.2" opacity=".5"/>
-      <line x1="26" y1="25" x2="23" y2="22" stroke="white" stroke-width="1.2" opacity=".5"/>
-      <line x1="18" y1="7" x2="18" y2="11" stroke="white" stroke-width="1.2" opacity=".5"/>
-      <line x1="18" y1="25" x2="18" y2="29" stroke="white" stroke-width="1.2" opacity=".5"/>
-      <ellipse cx="18" cy="18" rx="14" ry="6" stroke="white" stroke-width=".8" opacity=".25" transform="rotate(-30 18 18)"/>
+<div id="ai-agent" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+  <div id="ai-bubble" onclick="toggleChat()" style="background:#1a1a10;color:#f8f2e8;padding:12px 20px;border-radius:22px 22px 4px 22px;font-size:.82rem;font-weight:600;font-family:'Inter',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,.4);cursor:pointer;white-space:nowrap;letter-spacing:.01em;border:1px solid rgba(200,164,94,.3);">Besoin d'aide ? 💬</div>
+  <button id="chat-btn" onclick="toggleChat()" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3d5220,#5C6B3A);border:3px solid rgba(200,164,94,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(92,107,58,.7);animation:aiBtnPulse 2.5s ease-in-out infinite;outline:none;">
+    <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="16" r="7" stroke="white" stroke-width="2" fill="none"/>
+      <path d="M20 23 C12 23 7 27 7 32 L33 32 C33 27 28 23 20 23Z" fill="white" opacity=".9"/>
     </svg>
   </button>
 </div>
@@ -1767,7 +1751,7 @@ function sendSug(t){document.getElementById('ci').value=t;sendMsg();}
 // ── FORM ──
 function submitForm(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');btn.innerHTML='Envoyé ✓';btn.style.background='var(--olive-dark)';btn.disabled=true;}
 
-// ── LUNETTES 3D KADOR ──
+// ── KADOR GLAMOUR 3D ──
 (function(){
   const s=document.createElement('script');
   s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
@@ -1780,134 +1764,157 @@ function submitForm(e){e.preventDefault();const btn=e.target.querySelector('butt
     renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     renderer.setSize(W,H);
     renderer.shadowMap.enabled=true;
+    renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+
     const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(38,W/H,.1,100);
-    camera.position.set(0,0,5.5);
+    const camera=new THREE.PerspectiveCamera(36,W/H,.1,100);
+    camera.position.set(0,.1,5.8);
 
-    // Éclairage premium studio
-    scene.add(new THREE.AmbientLight(0xfff8f0,.5));
-    const k=new THREE.DirectionalLight(0xffffff,1.4);k.position.set(4,5,4);k.castShadow=true;scene.add(k);
-    const f=new THREE.DirectionalLight(0xd4af37,.8);f.position.set(-4,1,2);scene.add(f);
-    const r=new THREE.DirectionalLight(0xc8a45e,.5);r.position.set(0,3,-3);scene.add(r);
-    const b=new THREE.PointLight(0xfff8e8,.6,12);b.position.set(0,-2,3);scene.add(b);
+    // Éclairage studio luxe — reflets brillants sur noir
+    scene.add(new THREE.AmbientLight(0xffffff,.3));
+    const k=new THREE.DirectionalLight(0xffffff,2.2);k.position.set(3,6,4);k.castShadow=true;scene.add(k);
+    const f=new THREE.DirectionalLight(0xd4e8ff,1.0);f.position.set(-4,2,3);scene.add(f);
+    const t=new THREE.DirectionalLight(0xfff8e8,.8);t.position.set(0,4,-2);scene.add(t);
+    const p=new THREE.PointLight(0xffffff,.6,10);p.position.set(0,3,4);scene.add(p);
 
-    // Matériaux Kador premium
-    const mGold=new THREE.MeshStandardMaterial({color:0x1a1a2e,metalness:.85,roughness:.08,envMapIntensity:1.2});
-    const mLens=new THREE.MeshPhysicalMaterial({color:0x8ab4d4,transmission:.82,transparent:true,opacity:.35,roughness:.01,ior:1.52,thickness:.4});
-    const mNose=new THREE.MeshStandardMaterial({color:0x1a1208,roughness:.4,metalness:.2});
+    // Matériaux Kador Glamour
+    // Acétate noir brillant avec paillettes (glitter) simulé par roughness très bas
+    const mFrame=new THREE.MeshStandardMaterial({
+      color:0x0d0d12,
+      metalness:.15,
+      roughness:.04,
+      envMapIntensity:2.0
+    });
+    // Verres bleu clair transparent (comme sur la photo)
+    const mLens=new THREE.MeshPhysicalMaterial({
+      color:0x9ec4e8,
+      transmission:.88,
+      transparent:true,
+      opacity:.25,
+      roughness:.005,
+      ior:1.52,
+      thickness:.3,
+      reflectivity:.3
+    });
+    // Or pour les détails (logo, vis)
+    const mGold=new THREE.MeshStandardMaterial({color:0xD4AF37,metalness:.98,roughness:.05});
 
     const G=new THREE.Group();
 
-    // Monture KADOR — rectangulaire arrondie (style luxe contemporain)
-    // Dimensions: large horizontalement, modérée verticalement
-    const LW=0.85, LH=0.62, R=0.22; // radius des coins
+    // Forme KADOR GLAMOUR — octogonale avec coins coupés asymétriques (plus coupés en haut)
+    // Style: large, plutôt carré/hexagone, bord épais (~12mm réel = .18 en unités 3D)
+    const LW=0.92, LH=0.68;
+    // Coins coupés: haut-ext plus prononcés (comme la photo), bas-int plus petits
+    const cutTopOuter=0.28; // coins hauts extérieurs très coupés
+    const cutTopInner=0.20; // coins hauts intérieurs
+    const cutBotOuter=0.16; // coins bas extérieurs
+    const cutBotInner=0.12; // coins bas intérieurs
 
-    // Forme octogonale Kador Glamour — coupe des coins à 45°
-    function makeOctagon(w,h,cut){
-      const shape=new THREE.Shape();
-      shape.moveTo(-w+cut, h);
-      shape.lineTo( w-cut, h);
-      shape.lineTo( w,     h-cut);
-      shape.lineTo( w,    -h+cut);
-      shape.lineTo( w-cut,-h);
-      shape.lineTo(-w+cut,-h);
-      shape.lineTo(-w,    -h+cut);
-      shape.lineTo(-w,     h-cut);
-      shape.closePath();
-      return shape;
+    function makeKadorOcto(w,h,cto,cti,cbo,cbi){
+      const sh=new THREE.Shape();
+      sh.moveTo(-w+cto, h);
+      sh.lineTo( w-cto, h);
+      sh.lineTo( w,     h-cto*0.7);
+      sh.lineTo( w,    -h+cbo);
+      sh.lineTo( w-cbo,-h);
+      sh.lineTo(-w+cbi,-h);
+      sh.lineTo(-w,    -h+cbi*0.9);
+      sh.lineTo(-w,     h-cti*0.8);
+      sh.closePath();
+      return sh;
     }
 
     function makeRim(x){
-      const outer=makeOctagon(LW,LH,R);
-      const innerPath=new THREE.Path(makeOctagon(LW-.06,LH-.06,R-.025).getPoints(8));
-      outer.holes=[innerPath];
-      const geo=new THREE.ExtrudeGeometry(outer,{depth:.075,bevelEnabled:true,bevelSize:.018,bevelThickness:.012,bevelSegments:3});
-      const m=new THREE.Mesh(geo,mGold);
+      const outer=makeKadorOcto(LW,LH,cutTopOuter,cutTopInner,cutBotOuter,cutBotInner);
+      const inner=makeKadorOcto(LW-.13,LH-.13,cutTopOuter-.08,cutTopInner-.06,cutBotOuter-.05,cutBotInner-.04);
+      outer.holes=[new THREE.Path(inner.getPoints(12))];
+      const geo=new THREE.ExtrudeGeometry(outer,{depth:.13,bevelEnabled:true,bevelSize:.022,bevelThickness:.016,bevelSegments:4,curveSegments:12});
+      const m=new THREE.Mesh(geo,mFrame);
       m.position.x=x;
       m.castShadow=true;
+      m.receiveShadow=true;
       return m;
     }
 
     function makeLens(x){
-      const shape=makeOctagon(LW-.07,LH-.07,R-.025);
-      const geo=new THREE.ShapeGeometry(shape,8);
-      const m=new THREE.Mesh(geo,mLens);
-      m.position.set(x,0,.03);
+      const sh=makeKadorOcto(LW-.14,LH-.14,cutTopOuter-.09,cutTopInner-.07,cutBotOuter-.06,cutBotInner-.05);
+      const m=new THREE.Mesh(new THREE.ShapeGeometry(sh,12),mLens);
+      m.position.set(x,0,.04);
       return m;
     }
 
-    G.add(makeRim(-1.0));G.add(makeRim(1.0));
-    G.add(makeLens(-1.0));G.add(makeLens(1.0));
+    G.add(makeRim(-1.05));G.add(makeRim(1.05));
+    G.add(makeLens(-1.05));G.add(makeLens(1.05));
 
-    // Pont nasal plat style Kador
-    const bridgeShape=new THREE.Shape();
-    bridgeShape.moveTo(-.18,.06);bridgeShape.lineTo(.18,.06);
-    bridgeShape.lineTo(.18,-.06);bridgeShape.lineTo(-.18,-.06);
-    bridgeShape.closePath();
-    const brGeo=new THREE.ExtrudeGeometry(bridgeShape,{depth:.04,bevelEnabled:true,bevelSize:.008,bevelThickness:.005,bevelSegments:2});
-    const br=new THREE.Mesh(brGeo,mGold);
-    br.position.z=-.02;
-    br.position.y=.04;
-    G.add(br);
+    // Logo KADOR en or (simulé par petite plaque)
+    const logoGeo=new THREE.BoxGeometry(.28,.05,.005);
+    const logo=new THREE.Mesh(logoGeo,mGold);
+    logo.position.set(-.85,.18,.14);
+    G.add(logo);
+    const logo2=new THREE.Mesh(new THREE.BoxGeometry(.22,.04,.005),mGold);
+    logo2.position.set(.95,-.12,.14);
+    G.add(logo2);
 
-    // Branches Kador — droites avec coude élégant
+    // Pont nasal plat et large (style acétate)
+    const bSh=new THREE.Shape();
+    bSh.moveTo(-.22,.06);bSh.lineTo(.22,.06);bSh.lineTo(.22,-.06);bSh.lineTo(-.22,-.06);bSh.closePath();
+    const bGeo=new THREE.ExtrudeGeometry(bSh,{depth:.06,bevelEnabled:true,bevelSize:.01,bevelThickness:.008,bevelSegments:2});
+    const bridge=new THREE.Mesh(bGeo,mFrame);
+    bridge.position.set(0,.08,0);
+    G.add(bridge);
+
+    // Branches acétate — épaisses et droites puis coude
     function temple(s){
       const cv=new THREE.CatmullRomCurve3([
-        new THREE.Vector3(s*(LW+1.0),0,0),
-        new THREE.Vector3(s*(LW+1.0+.45),0,-.18),
-        new THREE.Vector3(s*(LW+1.0+.95),-.06,-.65),
-        new THREE.Vector3(s*(LW+1.0+1.05),-.38,-.88),
+        new THREE.Vector3(s*(LW+1.05),0,.06),
+        new THREE.Vector3(s*(LW+1.05+.3),0,-.05),
+        new THREE.Vector3(s*(LW+1.05+.75),-.04,-.6),
+        new THREE.Vector3(s*(LW+1.05+.88),-.35,-.88),
       ]);
-      G.add(new THREE.Mesh(new THREE.TubeGeometry(cv,20,.022,10),mGold));
-      // Charnière
-      const hGeo=new THREE.CylinderGeometry(.032,.032,.06,12);
-      const h=new THREE.Mesh(hGeo,mGold);
-      h.position.set(s*(LW+1.0),.0,0);
+      const tube=new THREE.TubeGeometry(cv,20,.038,10);
+      G.add(new THREE.Mesh(tube,mFrame));
+      // Charnière or
+      const h=new THREE.Mesh(new THREE.CylinderGeometry(.042,.042,.055,10),mGold);
       h.rotation.z=Math.PI/2;
+      h.position.set(s*(LW+1.05),0,.06);
       G.add(h);
-      // Embout
-      const eGeo=new THREE.CylinderGeometry(.026,.026,.1,8);
-      const e=new THREE.Mesh(eGeo,mNose);
-      e.position.set(s*(LW+2.06),-.42,-.9);
-      e.rotation.z=.15*s;
-      G.add(e);
     }
     temple(-1);temple(1);
 
     // Plaquettes nasales
-    [-.14,.14].forEach(sx=>{
-      const pg=new THREE.BoxGeometry(.03,.065,.025);
-      const p=new THREE.Mesh(pg,mNose);
-      p.position.set(sx,-.28,.04);
-      p.rotation.z=sx>0?.28:-.28;
+    [-.16,.16].forEach(sx=>{
+      const pg=new THREE.BoxGeometry(.028,.058,.02);
+      const p=new THREE.Mesh(pg,mFrame);
+      p.position.set(sx,-.28,.06);
+      p.rotation.z=sx>0?.22:-.22;
       G.add(p);
     });
 
-    G.rotation.x=.06;
-    G.position.y=.15;
+    G.rotation.x=.04;
+    G.position.y=.08;
     scene.add(G);
 
-    // Scroll-driven rotation
-    let tY=0,cY=0,tX=.06,cX=.06,auto=0;
+    // Animation scroll
+    let tY=0,cY=0,tX=.04,cX=.04,auto=0;
     const sec=document.getElementById('apropos');
     window.addEventListener('scroll',()=>{
       if(!sec)return;
       const rect=sec.getBoundingClientRect(),vh=window.innerHeight;
       if(rect.top<vh&&rect.bottom>0){
         const p=(vh-rect.top)/(vh+rect.height);
-        tY=p*Math.PI*3-.5;
-        tX=.06+Math.sin(p*Math.PI)*.15;
+        tY=p*Math.PI*3.2-.6;
+        tX=.04+Math.sin(p*Math.PI)*.18;
       }
     },{passive:true});
     canvas.addEventListener('mousemove',e=>{
       const r=canvas.getBoundingClientRect();
       const x=(e.clientX-r.left)/r.width*2-1,y=(e.clientY-r.top)/r.height*2-1;
-      tX=.06-y*.2;tY+=x*.06;
+      tX=.04-y*.2;tY+=x*.06;
     });
     (function loop(){
       requestAnimationFrame(loop);
-      auto+=.005;
-      cY+=(tY-cY)*.055;cX+=(tX-cX)*.055;
+      auto+=.004;
+      cY+=(tY-cY)*.05;cX+=(tX-cX)*.05;
       G.rotation.y=cY+auto;G.rotation.x=cX;
       renderer.render(scene,camera);
     })();
