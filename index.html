@@ -1014,20 +1014,30 @@ footer {
 <!-- VIDEO SECTION -->
 <section id="video-section">
   <div class="video-grid">
-    <div class="video-cell" style="position:relative;overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=1400&auto=format&fit=crop&q=90" 
-           alt="Opticienne examen de vue" 
-           style="width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(.85);transition:filter .6s ease;">
-      <div class="video-overlay">
+    <div class="video-cell" style="position:relative;overflow:hidden;background:#111;">
+      <video autoplay muted loop playsinline
+        style="width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.85);"
+        onerror="this.style.display='none'">
+        <source src="https://videos.pexels.com/video-files/8728472/8728472-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/5717441/5717441-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=1200&auto=format&fit=crop&q=90"
+           alt="Opticienne" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(.85);z-index:0;">
+      <div class="video-overlay" style="z-index:1;">
         <div class="video-label">Notre savoir-faire</div>
         <div class="video-title">L'art<br>du regard</div>
       </div>
     </div>
-    <div class="video-cell" style="position:relative;overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&auto=format&fit=crop&q=90" 
-           alt="Precision optique soin" 
-           style="width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(.85);transition:filter .6s ease;">
-      <div class="video-overlay" style="align-items:flex-end;text-align:right">
+    <div class="video-cell" style="position:relative;overflow:hidden;background:#111;">
+      <video autoplay muted loop playsinline
+        style="width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.85);"
+        onerror="this.style.display='none'">
+        <source src="https://videos.pexels.com/video-files/5752729/5752729-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/5717443/5717443-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&fit=crop&q=90"
+           alt="Examen optique" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(.85);z-index:0;">
+      <div class="video-overlay" style="align-items:flex-end;text-align:right;z-index:1;">
         <div class="video-label">Expertise optique</div>
         <div class="video-title">Précision<br>&amp; soin</div>
       </div>
@@ -1068,14 +1078,20 @@ footer {
 <section id="apropos">
   <div class="apropos-grid">
     <div class="apropos-visuel rvl" style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
-      <div id="kador-canvas-wrap" style="width:100%;height:480px;position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(160deg,#f5ede0 0%,#ede0cc 60%,#e8d8c0 100%);box-shadow:0 40px 100px rgba(22,22,16,.2);">
-        <canvas id="kador-canvas" style="width:100%;height:100%;display:block;"></canvas>
-        <div id="kador-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;pointer-events:none;">
-          <div style="width:40px;height:40px;border:2px solid rgba(92,107,58,.2);border-top-color:#5C6B3A;border-radius:50%;animation:spin .8s linear infinite;"></div>
-          <div style="font-size:.65rem;letter-spacing:.2em;color:rgba(92,107,58,.5);font-family:'Sora',sans-serif;">Chargement...</div>
+      <div style="display:flex;align-items:center;gap:3rem;width:100%;max-width:680px;">
+        <div id="kador-canvas-wrap" style="width:340px;height:340px;flex-shrink:0;position:relative;border-radius:50%;overflow:hidden;background:radial-gradient(circle,#f5ede0 0%,#e8d5bc 100%);box-shadow:0 24px 70px rgba(22,22,16,.18);">
+          <canvas id="kador-canvas" style="width:100%;height:100%;display:block;"></canvas>
+          <div id="kador-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:32px;height:32px;border:2px solid rgba(92,107,58,.2);border-top-color:#5C6B3A;border-radius:50%;animation:spin .8s linear infinite;"></div>
+          </div>
         </div>
-        <div style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;opacity:0;transition:opacity .5s;" id="kador-label">
-          <div style="font-size:.5rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(92,107,58,.6);font-family:'Sora',sans-serif;margin-bottom:3px;">Collection</div>
+        <div style="flex:1;text-align:left;">
+          <div style="font-size:.52rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(92,107,58,.6);font-family:'Sora',sans-serif;margin-bottom:.4rem;">Collection</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#1a1a10;letter-spacing:.08em;margin-bottom:.8rem;">Kador Glamour</div>
+          <div style="width:40px;height:1px;background:#C8A45E;margin-bottom:.8rem;"></div>
+          <div style="font-size:.78rem;color:rgba(22,22,16,.55);font-family:'Inter',sans-serif;line-height:1.7;">Monture acétate noire · Verres clairs<br>Fabriquée en Belgique</div>
+        </div>
+      </div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#2d2d1a;letter-spacing:.12em;">Kador Glamour</div>
         </div>
         <div style="position:absolute;top:16px;right:16px;font-size:.55rem;letter-spacing:.15em;color:rgba(22,22,16,.25);font-family:'Sora',sans-serif;pointer-events:none;">↕ défiler · ↔ survoler</div>
@@ -1568,12 +1584,12 @@ footer {
 <div id="toast"><div class="toast-dot"></div><span id="toast-msg">Mme K. est disponible aujourd'hui 👓</span></div>
 
 <!-- AI AGENT -->
-<div id="ai-agent" style="position:fixed;bottom:24px;right:110px;z-index:99999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-  <div id="ai-bubble" onclick="toggleChat()" style="background:#1a1a10;color:#f8f2e8;padding:12px 20px;border-radius:22px 22px 4px 22px;font-size:.82rem;font-weight:600;font-family:'Inter',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,.4);cursor:pointer;white-space:nowrap;letter-spacing:.01em;border:1px solid rgba(200,164,94,.3);">Besoin d'aide ? 💬</div>
-  <button id="chat-btn" onclick="toggleChat()" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3d5220,#5C6B3A);border:3px solid rgba(200,164,94,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(92,107,58,.7);animation:aiBtnPulse 2.5s ease-in-out infinite;outline:none;">
-    <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="16" r="7" stroke="white" stroke-width="2" fill="none"/>
-      <path d="M20 23 C12 23 7 27 7 32 L33 32 C33 27 28 23 20 23Z" fill="white" opacity=".9"/>
+<div id="ai-agent" style="position:fixed;bottom:24px;right:24px;z-index:99999;display:flex;align-items:center;gap:10px;">
+  <div id="ai-bubble" onclick="toggleChat()" style="background:#1a1a10;color:#f8f2e8;padding:11px 18px;border-radius:22px;font-size:.8rem;font-weight:600;font-family:'Inter',sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.45);cursor:pointer;white-space:nowrap;border:1px solid rgba(200,164,94,.35);letter-spacing:.01em;">Besoin d'aide ? 💬</div>
+  <button id="chat-btn" onclick="toggleChat()" style="width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#3d5220,#5C6B3A);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(92,107,58,.65),0 0 0 0 rgba(92,107,58,.3);animation:aiBtnPulse 2.5s ease-in-out infinite;outline:none;flex-shrink:0;">
+    <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="15" r="8" stroke="white" stroke-width="2.2" fill="none"/>
+      <path d="M6 36 C6 26 34 26 34 36" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round"/>
     </svg>
   </button>
 </div>
@@ -1766,153 +1782,71 @@ function sendSug(t){document.getElementById('ci').value=t;sendMsg();}
 function submitForm(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');btn.innerHTML='Envoyé ✓';btn.style.background='var(--olive-dark)';btn.disabled=true;}
 
 
-// ── KADOR 3D — VRAI MODÈLE GLB ──
+// ── KADOR 3D — AUTO-ROTATION ──
 (function(){
-  // Charger Three.js puis GLTFLoader
-  function loadScript(url, cb){
-    const s=document.createElement('script');s.src=url;s.onload=cb;document.head.appendChild(s);
-  }
-
-  loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', function(){
-    loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js', function(){
-      loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js', function(){
-        initKador3D();
-      });
+  function loadScript(url,cb){const s=document.createElement('script');s.src=url;s.onload=cb;document.head.appendChild(s);}
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',function(){
+    loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js',function(){
+      const canvas=document.getElementById('kador-canvas');
+      if(!canvas)return;
+      const wrap=document.getElementById('kador-canvas-wrap');
+      const S=340;
+      const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+      renderer.setSize(S,S);
+      renderer.outputEncoding=THREE.sRGBEncoding;
+      renderer.toneMapping=THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure=2.0;
+      const scene=new THREE.Scene();
+      const camera=new THREE.PerspectiveCamera(30,1,.01,100);
+      camera.position.set(0,.02,.28);
+      scene.add(new THREE.AmbientLight(0xfff8f0,1.0));
+      const k=new THREE.DirectionalLight(0xffffff,3.0);k.position.set(2,4,3);scene.add(k);
+      const f=new THREE.DirectionalLight(0xd4e8ff,1.5);f.position.set(-3,1,2);scene.add(f);
+      const b=new THREE.PointLight(0xfff0d4,.8,8);b.position.set(0,2,2);scene.add(b);
+      const loader=new THREE.GLTFLoader();
+      loader.load('https://raw.githubusercontent.com/mahdichouchen/glasses-3d-models/main/bold_red_square.glb',
+        function(gltf){
+          const model=gltf.scene;
+          const box=new THREE.Box3().setFromObject(model);
+          const center=box.getCenter(new THREE.Vector3());
+          const size=box.getSize(new THREE.Vector3());
+          const scale=.16/Math.max(size.x,size.y,size.z);
+          model.scale.setScalar(scale);
+          model.position.sub(center.multiplyScalar(scale));
+          model.traverse(function(c){
+            if(c.isMesh&&c.material){
+              const mats=Array.isArray(c.material)?c.material:[c.material];
+              mats.forEach(function(m){
+                m.color&&m.color.setHex(0x0d0d14);
+                m.metalness=.15;m.roughness=.04;m.envMapIntensity=2;
+              });
+            }
+          });
+          scene.add(model);
+          const loading=document.getElementById('kador-loading');
+          if(loading)loading.style.display='none';
+          let rx=-.08,ry=0;
+          canvas.addEventListener('mousemove',function(e){
+            const r=canvas.getBoundingClientRect();
+            rx=-.08-(e.clientY-r.top)/r.height*.2+.1;
+          });
+          (function loop(){
+            requestAnimationFrame(loop);
+            ry+=.008;
+            model.rotation.y=ry;
+            model.rotation.x+=(rx-model.rotation.x)*.04;
+            renderer.render(scene,camera);
+          })();
+        },
+        undefined,
+        function(){
+          const loading=document.getElementById('kador-loading');
+          if(loading)loading.innerHTML='<img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&auto=format&fit=crop&q=95" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+        }
+      );
     });
   });
-
-  function initKador3D(){
-    const canvas=document.getElementById('kador-canvas');
-    if(!canvas)return;
-    const wrap=document.getElementById('kador-canvas-wrap');
-    const W=wrap.offsetWidth||480, H=480;
-
-    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-    renderer.setSize(W,H);
-    renderer.outputEncoding=THREE.sRGBEncoding;
-    renderer.toneMapping=THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure=1.8;
-    renderer.shadowMap.enabled=true;
-
-    const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(32,W/H,.01,100);
-    camera.position.set(0,.05,.32);
-
-    // Éclairage studio premium
-    scene.add(new THREE.AmbientLight(0xfff8f0,.8));
-    const k=new THREE.DirectionalLight(0xffffff,2.5);
-    k.position.set(2,3,3);k.castShadow=true;scene.add(k);
-    const f=new THREE.DirectionalLight(0xd4e8ff,1.2);
-    f.position.set(-3,1,2);scene.add(f);
-    const t=new THREE.DirectionalLight(0xfff0d4,.8);
-    t.position.set(0,4,-2);scene.add(t);
-    const p=new THREE.PointLight(0xffffff,.5,5);
-    p.position.set(0,1,2);scene.add(p);
-
-    // Charger le vrai modèle GLB de lunettes
-    const loader=new THREE.GLTFLoader();
-    const dracoLoader=new THREE.DRACOLoader();
-    dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/');
-    loader.setDRACOLoader(dracoLoader);
-
-    // Modèle: lunettes carrées noires (style Kador)
-    const MODEL_URL='https://raw.githubusercontent.com/mahdichouchen/glasses-3d-models/main/bold_red_square.glb';
-
-    loader.load(MODEL_URL, function(gltf){
-      const model=gltf.scene;
-
-      // Centrer et scaler le modèle
-      const box=new THREE.Box3().setFromObject(model);
-      const center=box.getCenter(new THREE.Vector3());
-      const size=box.getSize(new THREE.Vector3());
-      const maxDim=Math.max(size.x,size.y,size.z);
-      const scale=.18/maxDim;
-      model.scale.setScalar(scale);
-      model.position.sub(center.multiplyScalar(scale));
-
-      // Appliquer matériau noir brillant sur la monture
-      model.traverse(function(child){
-        if(child.isMesh){
-          // Garder les matériaux d'origine mais améliorer
-          if(child.material){
-            const mats=Array.isArray(child.material)?child.material:[child.material];
-            mats.forEach(function(mat){
-              mat.envMapIntensity=1.5;
-              if(mat.color){
-                // Monture noire
-                const c=mat.color;
-                if(c.r>0.3&&c.g<0.2&&c.b<0.2){
-                  // Rouge → noir Kador
-                  mat.color.setHex(0x0d0d14);
-                  mat.metalness=.2;
-                  mat.roughness=.05;
-                }
-              }
-            });
-          }
-          child.castShadow=true;
-        }
-      });
-
-      scene.add(model);
-
-      // Masquer loading, afficher label
-      const loading=document.getElementById('kador-loading');
-      const label=document.getElementById('kador-label');
-      if(loading)loading.style.display='none';
-      if(label)label.style.opacity='1';
-
-      // Animation scroll style Apple
-      let tY=0,cY=0,tX=-.05,cX=-.05,auto=0;
-      const sec=document.getElementById('apropos');
-
-      window.addEventListener('scroll',function(){
-        if(!sec)return;
-        const rect=sec.getBoundingClientRect(),vh=window.innerHeight;
-        if(rect.top<vh&&rect.bottom>0){
-          const p=(vh-rect.top)/(vh+rect.height);
-          tY=(p-.3)*Math.PI*2.5;
-          tX=-.05+Math.sin(p*Math.PI)*.2;
-        }
-      },{passive:true});
-
-      canvas.addEventListener('mousemove',function(e){
-        const r=canvas.getBoundingClientRect();
-        const x=(e.clientX-r.left)/r.width*2-1;
-        const y=(e.clientY-r.top)/r.height*2-1;
-        tX=-.05-y*.25;
-        tY+=x*.08;
-      });
-
-      (function loop(){
-        requestAnimationFrame(loop);
-        auto+=.003;
-        cY+=(tY-cY)*.05;
-        cX+=(tX-cX)*.05;
-        model.rotation.y=cY+auto;
-        model.rotation.x=cX;
-        renderer.render(scene,camera);
-      })();
-
-      window.addEventListener('resize',function(){
-        const nw=wrap.offsetWidth;
-        camera.aspect=nw/H;
-        camera.updateProjectionMatrix();
-        renderer.setSize(nw,H);
-      });
-
-    }, undefined, function(err){
-      // Fallback: image si GLB échoue
-      console.warn('GLB failed, fallback image');
-      const loading=document.getElementById('kador-loading');
-      if(loading){
-        loading.innerHTML='<img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=900&auto=format&fit=crop&q=95" style="width:100%;height:100%;object-fit:cover;">';
-      }
-      const label=document.getElementById('kador-label');
-      if(label)label.style.opacity='1';
-    });
-  }
 })();
 </script>
 </body>
