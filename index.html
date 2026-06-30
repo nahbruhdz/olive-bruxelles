@@ -1836,16 +1836,12 @@ function submitForm(e){e.preventDefault();const btn=e.target.querySelector('butt
           const loading=document.getElementById('kador-loading');
           if(loading)loading.style.display='none';
           let rx=-.05,ry=0,mx=0,my=0;
-          canvas.addEventListener('mousemove',function(e){
-            const r=canvas.getBoundingClientRect();
-            mx=(e.clientX-r.left)/r.width-.5;
-            my=(e.clientY-r.top)/r.height-.5;
-          });
+          
           (function loop(){
             requestAnimationFrame(loop);
             ry+=.004;
             rx+=(my*-.25-rx)*.04;
-            model.rotation.y=ry+mx*.3;
+            model.rotation.y=ry;
             model.rotation.x+=(rx-model.rotation.x)*.04;
             renderer.render(scene,camera);
           })();
