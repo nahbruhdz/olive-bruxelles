@@ -67,6 +67,7 @@ body {
 .g3d-hint { display:flex; align-items:center; gap:.5rem; color:rgba(248,242,232,.2); font-size:.7rem; margin-top:.4rem; }
 .g3d-arrow { font-size:1rem; animation:scrollHint 2s ease-in-out infinite; }
 @keyframes scrollHint { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+@keyframes kenBurnsKador { 0%{transform:scale(1) translate(0,0)}50%{transform:scale(1.06) translate(-1%,-.5%)}100%{transform:scale(1.04) translate(1%,.5%)} }
 
 /* ── WELCOME POPUP ── */
 #welcome-popup { position:fixed; inset:0; z-index:99990; display:flex; align-items:center; justify-content:center; background:rgba(22,22,16,.75); backdrop-filter:blur(12px); animation:wpFadeIn .6s ease both; }
@@ -1013,17 +1014,18 @@ footer {
 <section id="video-section">
   <div class="video-grid">
     <div class="video-cell" style="position:relative;overflow:hidden;">
-      <video autoplay muted loop playsinline crossorigin="anonymous" style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.5) saturate(.7);">
-        <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38aaa27f46e5acd55&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
-      </video>
-      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=1200&auto=format&fit=crop&q=90" alt="Opticienne examen de vue" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.8);">
+      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=1400&auto=format&fit=crop&q=90" 
+           alt="Opticienne examen de vue" 
+           style="width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(.85);transition:filter .6s ease;">
       <div class="video-overlay">
         <div class="video-label">Notre savoir-faire</div>
         <div class="video-title">L'art<br>du regard</div>
       </div>
     </div>
     <div class="video-cell" style="position:relative;overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=90" alt="Precision optique" style="width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.8);">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&auto=format&fit=crop&q=90" 
+           alt="Precision optique soin" 
+           style="width:100%;height:100%;object-fit:cover;filter:brightness(.52) saturate(.85);transition:filter .6s ease;">
       <div class="video-overlay" style="align-items:flex-end;text-align:right">
         <div class="video-label">Expertise optique</div>
         <div class="video-title">Précision<br>&amp; soin</div>
@@ -1065,10 +1067,17 @@ footer {
 <section id="apropos">
   <div class="apropos-grid">
     <div class="apropos-visuel rvl" style="display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
-      <div id="kador-canvas-wrap" style="width:100%;height:480px;position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#f8f2e8 0%,#ede4d6 50%,#e0d5c5 100%);box-shadow:0 40px 100px rgba(22,22,16,.18);">
-        <canvas id="kador-canvas" style="width:100%;height:100%;display:block;"></canvas>
+      <div id="kador-canvas-wrap" style="width:100%;height:480px;position:relative;border-radius:16px;overflow:hidden;box-shadow:0 40px 100px rgba(22,22,16,.22);">
+        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=1400&auto=format&fit=crop&q=95" 
+             alt="Monture Kador Glamour" 
+             id="kador-canvas"
+             style="width:100%;height:100%;object-fit:cover;transition:transform 8s ease-in-out;animation:kenBurnsKador 12s ease-in-out infinite alternate;">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(248,242,232,.08) 0%,transparent 60%);pointer-events:none;"></div>
         <div style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;">
-          <div style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(92,107,58,.5);font-family:'Sora',sans-serif;">Collection</div>
+          <div style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(92,107,58,.7);font-family:'Sora',sans-serif;background:rgba(248,242,232,.85);padding:4px 12px;border-radius:4px;margin-bottom:4px;">Collection</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:#1a1a10;letter-spacing:.1em;background:rgba(248,242,232,.85);padding:2px 16px;border-radius:4px;">Kador Glamour</div>
+        </div>
+      </div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#5C6B3A;letter-spacing:.08em;">Kador</div>
         </div>
         <div style="position:absolute;top:20px;right:20px;font-size:.58rem;letter-spacing:.2em;color:rgba(22,22,16,.25);font-family:'Sora',sans-serif;">↕ défiler</div>
@@ -1554,7 +1563,7 @@ footer {
 <div id="toast"><div class="toast-dot"></div><span id="toast-msg">Mme K. est disponible aujourd'hui 👓</span></div>
 
 <!-- AI AGENT -->
-<div id="ai-agent" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+<div id="ai-agent" style="position:fixed;bottom:24px;right:110px;z-index:99999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
   <div id="ai-bubble" onclick="toggleChat()" style="background:#1a1a10;color:#f8f2e8;padding:12px 20px;border-radius:22px 22px 4px 22px;font-size:.82rem;font-weight:600;font-family:'Inter',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,.4);cursor:pointer;white-space:nowrap;letter-spacing:.01em;border:1px solid rgba(200,164,94,.3);">Besoin d'aide ? 💬</div>
   <button id="chat-btn" onclick="toggleChat()" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3d5220,#5C6B3A);border:3px solid rgba(200,164,94,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(92,107,58,.7);animation:aiBtnPulse 2.5s ease-in-out infinite;outline:none;">
     <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
@@ -1751,180 +1760,7 @@ function sendSug(t){document.getElementById('ci').value=t;sendMsg();}
 // ── FORM ──
 function submitForm(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');btn.innerHTML='Envoyé ✓';btn.style.background='var(--olive-dark)';btn.disabled=true;}
 
-// ── KADOR GLAMOUR 3D ──
-(function(){
-  const s=document.createElement('script');
-  s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload=function(){
-    const canvas=document.getElementById('kador-canvas');
-    if(!canvas)return;
-    const wrap=document.getElementById('kador-canvas-wrap');
-    const W=wrap.offsetWidth||480, H=wrap.offsetHeight||480;
-    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-    renderer.setSize(W,H);
-    renderer.shadowMap.enabled=true;
-    renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 
-    const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(36,W/H,.1,100);
-    camera.position.set(0,.1,5.8);
-
-    // Éclairage studio luxe — reflets brillants sur noir
-    scene.add(new THREE.AmbientLight(0xffffff,.3));
-    const k=new THREE.DirectionalLight(0xffffff,2.2);k.position.set(3,6,4);k.castShadow=true;scene.add(k);
-    const f=new THREE.DirectionalLight(0xd4e8ff,1.0);f.position.set(-4,2,3);scene.add(f);
-    const t=new THREE.DirectionalLight(0xfff8e8,.8);t.position.set(0,4,-2);scene.add(t);
-    const p=new THREE.PointLight(0xffffff,.6,10);p.position.set(0,3,4);scene.add(p);
-
-    // Matériaux Kador Glamour
-    // Acétate noir brillant avec paillettes (glitter) simulé par roughness très bas
-    const mFrame=new THREE.MeshStandardMaterial({
-      color:0x0d0d12,
-      metalness:.15,
-      roughness:.04,
-      envMapIntensity:2.0
-    });
-    // Verres bleu clair transparent (comme sur la photo)
-    const mLens=new THREE.MeshPhysicalMaterial({
-      color:0x9ec4e8,
-      transmission:.88,
-      transparent:true,
-      opacity:.25,
-      roughness:.005,
-      ior:1.52,
-      thickness:.3,
-      reflectivity:.3
-    });
-    // Or pour les détails (logo, vis)
-    const mGold=new THREE.MeshStandardMaterial({color:0xD4AF37,metalness:.98,roughness:.05});
-
-    const G=new THREE.Group();
-
-    // Forme KADOR GLAMOUR — octogonale avec coins coupés asymétriques (plus coupés en haut)
-    // Style: large, plutôt carré/hexagone, bord épais (~12mm réel = .18 en unités 3D)
-    const LW=0.92, LH=0.68;
-    // Coins coupés: haut-ext plus prononcés (comme la photo), bas-int plus petits
-    const cutTopOuter=0.28; // coins hauts extérieurs très coupés
-    const cutTopInner=0.20; // coins hauts intérieurs
-    const cutBotOuter=0.16; // coins bas extérieurs
-    const cutBotInner=0.12; // coins bas intérieurs
-
-    function makeKadorOcto(w,h,cto,cti,cbo,cbi){
-      const sh=new THREE.Shape();
-      sh.moveTo(-w+cto, h);
-      sh.lineTo( w-cto, h);
-      sh.lineTo( w,     h-cto*0.7);
-      sh.lineTo( w,    -h+cbo);
-      sh.lineTo( w-cbo,-h);
-      sh.lineTo(-w+cbi,-h);
-      sh.lineTo(-w,    -h+cbi*0.9);
-      sh.lineTo(-w,     h-cti*0.8);
-      sh.closePath();
-      return sh;
-    }
-
-    function makeRim(x){
-      const outer=makeKadorOcto(LW,LH,cutTopOuter,cutTopInner,cutBotOuter,cutBotInner);
-      const inner=makeKadorOcto(LW-.13,LH-.13,cutTopOuter-.08,cutTopInner-.06,cutBotOuter-.05,cutBotInner-.04);
-      outer.holes=[new THREE.Path(inner.getPoints(12))];
-      const geo=new THREE.ExtrudeGeometry(outer,{depth:.13,bevelEnabled:true,bevelSize:.022,bevelThickness:.016,bevelSegments:4,curveSegments:12});
-      const m=new THREE.Mesh(geo,mFrame);
-      m.position.x=x;
-      m.castShadow=true;
-      m.receiveShadow=true;
-      return m;
-    }
-
-    function makeLens(x){
-      const sh=makeKadorOcto(LW-.14,LH-.14,cutTopOuter-.09,cutTopInner-.07,cutBotOuter-.06,cutBotInner-.05);
-      const m=new THREE.Mesh(new THREE.ShapeGeometry(sh,12),mLens);
-      m.position.set(x,0,.04);
-      return m;
-    }
-
-    G.add(makeRim(-1.05));G.add(makeRim(1.05));
-    G.add(makeLens(-1.05));G.add(makeLens(1.05));
-
-    // Logo KADOR en or (simulé par petite plaque)
-    const logoGeo=new THREE.BoxGeometry(.28,.05,.005);
-    const logo=new THREE.Mesh(logoGeo,mGold);
-    logo.position.set(-.85,.18,.14);
-    G.add(logo);
-    const logo2=new THREE.Mesh(new THREE.BoxGeometry(.22,.04,.005),mGold);
-    logo2.position.set(.95,-.12,.14);
-    G.add(logo2);
-
-    // Pont nasal plat et large (style acétate)
-    const bSh=new THREE.Shape();
-    bSh.moveTo(-.22,.06);bSh.lineTo(.22,.06);bSh.lineTo(.22,-.06);bSh.lineTo(-.22,-.06);bSh.closePath();
-    const bGeo=new THREE.ExtrudeGeometry(bSh,{depth:.06,bevelEnabled:true,bevelSize:.01,bevelThickness:.008,bevelSegments:2});
-    const bridge=new THREE.Mesh(bGeo,mFrame);
-    bridge.position.set(0,.08,0);
-    G.add(bridge);
-
-    // Branches acétate — épaisses et droites puis coude
-    function temple(s){
-      const cv=new THREE.CatmullRomCurve3([
-        new THREE.Vector3(s*(LW+1.05),0,.06),
-        new THREE.Vector3(s*(LW+1.05+.3),0,-.05),
-        new THREE.Vector3(s*(LW+1.05+.75),-.04,-.6),
-        new THREE.Vector3(s*(LW+1.05+.88),-.35,-.88),
-      ]);
-      const tube=new THREE.TubeGeometry(cv,20,.038,10);
-      G.add(new THREE.Mesh(tube,mFrame));
-      // Charnière or
-      const h=new THREE.Mesh(new THREE.CylinderGeometry(.042,.042,.055,10),mGold);
-      h.rotation.z=Math.PI/2;
-      h.position.set(s*(LW+1.05),0,.06);
-      G.add(h);
-    }
-    temple(-1);temple(1);
-
-    // Plaquettes nasales
-    [-.16,.16].forEach(sx=>{
-      const pg=new THREE.BoxGeometry(.028,.058,.02);
-      const p=new THREE.Mesh(pg,mFrame);
-      p.position.set(sx,-.28,.06);
-      p.rotation.z=sx>0?.22:-.22;
-      G.add(p);
-    });
-
-    G.rotation.x=.04;
-    G.position.y=.08;
-    scene.add(G);
-
-    // Animation scroll
-    let tY=0,cY=0,tX=.04,cX=.04,auto=0;
-    const sec=document.getElementById('apropos');
-    window.addEventListener('scroll',()=>{
-      if(!sec)return;
-      const rect=sec.getBoundingClientRect(),vh=window.innerHeight;
-      if(rect.top<vh&&rect.bottom>0){
-        const p=(vh-rect.top)/(vh+rect.height);
-        tY=p*Math.PI*3.2-.6;
-        tX=.04+Math.sin(p*Math.PI)*.18;
-      }
-    },{passive:true});
-    canvas.addEventListener('mousemove',e=>{
-      const r=canvas.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width*2-1,y=(e.clientY-r.top)/r.height*2-1;
-      tX=.04-y*.2;tY+=x*.06;
-    });
-    (function loop(){
-      requestAnimationFrame(loop);
-      auto+=.004;
-      cY+=(tY-cY)*.05;cX+=(tX-cX)*.05;
-      G.rotation.y=cY+auto;G.rotation.x=cX;
-      renderer.render(scene,camera);
-    })();
-    window.addEventListener('resize',()=>{
-      const nw=wrap.offsetWidth,nh=wrap.offsetHeight;
-      camera.aspect=nw/nh;camera.updateProjectionMatrix();renderer.setSize(nw,nh);
-    });
-  };
-  document.head.appendChild(s);
-})();
 </script>
 </body>
 </html>
